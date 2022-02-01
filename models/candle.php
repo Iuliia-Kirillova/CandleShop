@@ -47,6 +47,7 @@ class Candle
         $query = "
                 INSERT INTO `candles`
                 SET `candle_name` = '$data[name]',
+                `candle_img` = 'data[img]',
                 `candle_volume_id` = '$data[volume]',
                 `candle_smell` = '$data[smell]',
                 `candle_description` = '$data[description]',

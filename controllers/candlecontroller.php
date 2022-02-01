@@ -22,7 +22,7 @@ class CandleController
     public function actionIndex($page = 1)
     {
         $title = 'Каталог свечей';
-        $limit = 3;
+        $limit = 6;
         $offset = ($page - 1) * $limit;
         $candlesInfo = $this->candleModel->getList($offset, $limit);
         $candles = $candlesInfo['candles'];
@@ -42,6 +42,9 @@ class CandleController
             $name = htmlentities($_POST['candle_name']);
             $name = mysqli_real_escape_string($this->connection, $name);
 
+            $img = htmlentities($_POST['candle_img']);
+            $img = mysqli_real_escape_string($this->connection, $img);
+
             $volume = $_POST['candle_volume'];
 
             $smell = htmlentities($_POST['candle_smell']);
@@ -56,6 +59,7 @@ class CandleController
             if (empty($errors)) {
                 $this->candleModel->addCandle(array(
                     'name' => $name,
+                    'img' => $img,
                     'volume' => $volume,
                     'smell' => $smell,
                     'description' => $description,
@@ -85,6 +89,9 @@ class CandleController
         $name = htmlentities($_POST['candle_name']);
         $name = mysqli_real_escape_string($this->connection, $name);
 
+        $img = htmlentities($_POST['candle_img']);
+        $img = mysqli_real_escape_string($this->connection, $img);
+
         $smell = htmlentities($_POST['candle_smell']);
         $smell = mysqli_real_escape_string($this->connection, $smell);
 
@@ -99,6 +106,7 @@ class CandleController
         if (empty($errors)) {
             $this->candleModel->editCandle(array(
                 'name' => $name,
+                'img' => $img,
                 'volume' => $volume,
                 'smell' => $smell,
                 'description' => $description,
