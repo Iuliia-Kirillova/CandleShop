@@ -12,77 +12,45 @@
     <script src="<?= LIBS . 'bootstrap/js/bootstrap.js'; ?>"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="<?= FULL_SITE_ROOT . 'main' ?>">CandleShop</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link <?= $title === 'Каталог свечей' ? 'active' : ''; ?>" aria-current="page"
-                       href="<?= FULL_SITE_ROOT . 'candles'; ?>">Каталог свечей</a>
-                </li>
-                <?php if (!$this->isAuthorized): ?>
 
-                    <li class="nav-item">
-                        <a class="nav-link <?= $title === 'Регистрация' ? 'active' : ''; ?>"
-                           href="<?= FULL_SITE_ROOT . 'reg'; ?>">Регистрация</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $title === 'Авторизация' ? 'active' : ''; ?>"
-                           href="<?= FULL_SITE_ROOT . 'auth'; ?>">Авторизация</a>
-                    </li>
+<div class="container">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                <use xlink:href="#bootstrap"/>
+            </svg>
+        </a>
 
-                <?php else: ?>
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="#" class="nav-link px-2 link-secondary"><img
+                            src="https://img.icons8.com/external-icongeek26-outline-icongeek26/64/000000/external-candles-buddhism-icongeek26-outline-icongeek26.png"/></a>
+            </li>
+            <li><a href="<?= FULL_SITE_ROOT . 'candles'; ?>"
+                   class="nav-link px-2 link-dark <?= $title === 'Каталог свечей' ? 'active' : ''; ?>">Каталог
+                    свечей</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Про нас</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Контакты</a></li>
+        </ul>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= FULL_SITE_ROOT . 'logout'; ?>">Выход</a>
-                    </li>
+        <div class="col-md-3 text-end">
 
-                <?php endif; ?>
-            </ul>
+            <?php if (!$this->isAuthorized): ?>
+
+                <a type="button"
+                   class="btn btn-outline-primary me-2 <?= $title === 'Авторизация' ? 'active' : ''; ?>"
+                   href="<?= FULL_SITE_ROOT . 'auth'; ?>">Login</a>
+                <a type="button" class="btn btn-primary <?= $title === 'Регистрация' ? 'active' : ''; ?>"
+                   href="<?= FULL_SITE_ROOT . 'reg'; ?>">Sign-up</a>
+
+            <?php else: ?>
+
+                <a type="button" class="btn btn-outline-primary me-2"
+                   href="<?= FULL_SITE_ROOT . 'logout'; ?>">Exit</a>
+
+            <?php endif; ?>
+
         </div>
-    </div>
-</nav>
+    </header>
+</div>
 
-<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-<!--    <div class="container px-4 px-lg-5">-->
-<!--        <a class="navbar-brand" href="#!">Candle Shop</a>-->
-<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"-->
-<!--                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span-->
-<!--                    class="navbar-toggler-icon"></span></button>-->
-<!--        <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-<!--            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">-->
-<!--                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Главная</a></li>-->
-<!--                <li class="nav-item"><a class="nav-link" href="#!">Про нас</a></li>-->
-<!--                <li class="nav-item dropdown">-->
-<!--                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"-->
-<!--                       data-bs-toggle="dropdown" aria-expanded="false">Каталог</a>-->
-<!--                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--                        <li><a class="dropdown-item" href="--><?//= $title === 'Каталог свечей' ? 'active' : ''; ?><!--">Вся продукция</a></li>-->
-<!--                        <li>-->
-<!--                            <hr class="dropdown-divider"/>-->
-<!--                        </li>-->
-<!--                        <li><a class="dropdown-item" href="#!">Хиты</a></li>-->
-<!--                        <li><a class="dropdown-item" href="#!">Новинки</a></li>-->
-<!--                    </ul>-->
-<!--                </li>-->
-<!---->
-<!---->
-<!--            </ul>-->
-<!---->
-<!--            <form class="d-flex">-->
-<!--                <button class="btn btn-outline-dark" type="submit">-->
-<!--                    <i class="bi-cart-fill me-1"></i>-->
-<!--                    Корзина-->
-<!--                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>-->
-<!--                </button>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</nav>-->
-
-<h1> <?= $title; ?> </h1>
+<h1 style="text-align:center"> <?= $title; ?> </h1>
