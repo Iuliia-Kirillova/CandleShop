@@ -78,15 +78,15 @@ class CabinetController
             }
 
             if (empty($errors)) {
-                $countRows = $this->userModel->checkIfLoginExists($login);
-                if ($countRows == 1) {
-                    $errors[] = 'Пользователь с таким логином уже есть';
-                }
-
-                $countRows = $this->userModel->checkIfEmailExists($email);
-                if ($countRows == 1) {
-                    $errors[] = 'Пользователь с таким email уже есть';
-                }
+//                $countRows = $this->userModel->checkIfLoginExists($login);
+//                if ($countRows == 1) {
+//                    $errors[] = 'Пользователь с таким логином уже есть';
+//                }
+//
+//                $countRows = $this->userModel->checkIfEmailExists($email);
+//                if ($countRows == 1) {
+//                    $errors[] = 'Пользователь с таким email уже есть';
+//                }
 
                 if (empty($errors)) {
                     $this->userModel->editUser(array(

@@ -99,16 +99,16 @@ class UserController
 
             $password = htmlentities($_POST['user_password']);
             $password = mysqli_real_escape_string($this->connection, $password);
-            $password = md5($password);
+//            $password = md5($password); // подправить скрытие пароля
 
             $userId = $this->userModel->checkUserByLoginAndPassword($login, $password);
             if ($userId > 0) {
                 $this->userModel->auth($userId);
-                header('Location: ' . FULL_SITE_ROOT . 'candles');
+                header('Location: ' . FULL_SITE_ROOT . 'profile');
             } else {
                 $errors[] = 'Такой связки логин/пароль не найдено!';
             }
-            header('Location: ' . FULL_SITE_ROOT . 'cabinet');
+//            header('Location: ' . FULL_SITE_ROOT . 'cabinet');
         }
         require_once('./views/user/auth.php');
     }
