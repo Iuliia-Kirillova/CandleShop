@@ -1,24 +1,37 @@
 <?php
 
-class UserController
+class CabinetController
 {
-    private $userModel;
-    private $connection;
     public $isAuthorized;
+    private $connection;
+    private $userModel;
 
     public function __construct()
     {
+        $this->isAuthorized = (new User())->userIsAuthorized();
         $this->userModel = new User();
         $this->connection = DB::getConnection();
     }
 
-    public function actionReg()
-    {
-        $title = "Регистрация";
+    public function actionCabinet() {
+
+        $title = 'Личный кабинет';
+
+        $user = $this->userModel->getUserById();
+
+        include_once('./views/cabinet/cabinet.php');
+    }
+
+    public function actionEdit() {
+
+        $title = 'Редактирование данных';
         $errors = [];
+        $user = $this->userModel->getUserById();
+        $userId = $user['user_id'];
+
+        $result = false;
 
         if (isset($_POST['user_login'])) {
-
             $login = htmlentities($_POST['user_login']);
             $login = mysqli_real_escape_string($this->connection, $login);
             if (!$login) {$errors[] = 'Введите логин!';}
@@ -76,46 +89,18 @@ class UserController
                 }
 
                 if (empty($errors)) {
-                    $password = md5($password);
-                    $userId =  $this->userModel->register($login, $email, $password);
-                    $this->userModel->auth($userId);
-                    header('Location: ' . FULL_SITE_ROOT . 'candles');
+                    $this->userModel->editUser(array(
+                        'name' => $name,
+                        'login' => $login,
+                        'password' => $password,
+                        'phone' => $phone,
+                        'email' => $email
+                    ), $userId);
+                    header('Location: ' . FULL_SITE_ROOT . 'profile');
                 }
             }
         }
-
-        require_once('./views/user/reg.php');
+        include_once('./views/cabinet/edit.php');
     }
-
-    public function actionAuth()
-    {
-        $title = "Авторизация";
-        $errors = [];
-
-        if (isset($_POST['user_login'])) {
-
-            $login = htmlentities($_POST['user_login']);
-            $login = mysqli_real_escape_string($this->connection, $login);
-
-            $password = htmlentities($_POST['user_password']);
-            $password = mysqli_real_escape_string($this->connection, $password);
-            $password = md5($password);
-
-            $userId = $this->userModel->checkUserByLoginAndPassword($login, $password);
-            if ($userId > 0) {
-                $this->userModel->auth($userId);
-                header('Location: ' . FULL_SITE_ROOT . 'candles');
-            } else {
-                $errors[] = 'Такой связки логин/пароль не найдено!';
-            }
-            header('Location: ' . FULL_SITE_ROOT . 'cabinet');
-        }
-        require_once('./views/user/auth.php');
-    }
-
-    public function actionLogout() {
-        $this->userModel->logout();
-        header('Location: ' . FULL_SITE_ROOT . 'candles');
-    }
-
 }
+

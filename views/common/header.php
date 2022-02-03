@@ -43,6 +43,8 @@
 
             <?php else: ?>
 
+                <a type="button" class="btn btn-primary"
+                   href="<?= FULL_SITE_ROOT . 'profile'; ?>">Profile</a>
                 <a type="button" class="btn btn-outline-primary me-2"
                    href="<?= FULL_SITE_ROOT . 'logout'; ?>">Exit</a>
 

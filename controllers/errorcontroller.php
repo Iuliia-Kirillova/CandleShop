@@ -6,6 +6,12 @@ class errorController {
 
     public $isAuthorized;
 
+    public function __construct()
+    {
+        $this->isAuthorized = (new User())->userIsAuthorized();
+    }
+
+
     public function actionError()
     {
         $title = 'Ooops...';
@@ -16,4 +22,4 @@ class errorController {
 
 
 
-//include_once('./views/candle/index.php');
+//include_once('./views/candle/cabinet.php');

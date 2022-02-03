@@ -9,30 +9,49 @@
 </div>
 <?php endif; ?>
 <form method="POST">
+
     <div class="mb-3">
         <label class="form-label">
             Login
         </label>
         <input type="text" class="form-control" name="user_login" placeholder="">
     </div>
+
+    <div class="mb-3">
+        <label class="form-label">
+            Name
+        </label>
+        <input type="text" class="form-control" name="user_name" placeholder="">
+    </div>
+
     <div class="mb-3">
         <label class="form-label">
             Email
         </label>
         <input type="email" class="form-control" name="user_email" placeholder="abc@example.com">
     </div>
+
+    <div class="mb-3">
+        <label class="form-label">
+            Phone
+        </label>
+        <input type="tel" class="form-control" name="user_phone" placeholder="">
+    </div>
+
     <div class="mb-3">
         <label class="form-label">
             Password
         </label>
         <input type="password" class="form-control" name="user_password" placeholder="">
     </div>
+
     <div class="mb-3">
         <label class="form-label">
             Repeat Password
         </label>
         <input type="password" class="form-control" name="user_repeat_password" placeholder="">
     </div>
+
     <div class="col-auto">
         <button type="submit" class="btn btn-primary mb-3">Зарегистрироваться</button>
     </div>

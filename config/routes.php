@@ -22,6 +22,10 @@
             'reg' => 'reg',
             'logout' => 'logout'
         ),
+        'CabinetController' => array(
+            'profile' => 'cabinet',
+            'cabinet/edit' => 'edit'
+        ),
         'ErrorController' => array(
 //            '*' => 'error',
             '/([-a-z]+)' => 'error'
