@@ -31,7 +31,10 @@
                 }
             }
             if (!$found) {
+                $error = new ErrorController;
+                $error->actionError();
                 // TODO: redirect на ErrorController -> actionError;
+
             }
         }
     }

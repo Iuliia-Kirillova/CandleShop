@@ -4,6 +4,7 @@ class UserController
 {
     private $userModel;
     private $connection;
+    public $isAuthorized;
 
     public function __construct()
     {

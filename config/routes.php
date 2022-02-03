@@ -21,5 +21,9 @@
             'auth' => 'auth',
             'reg' => 'reg',
             'logout' => 'logout'
+        ),
+        'ErrorController' => array(
+//            '*' => 'error',
+            '/([-a-z]+)' => 'error'
         )
     );
