@@ -29,6 +29,9 @@
                             <div class="text-center"><a class="btn btn-outline-dark mt-auto"
                                                         href="<?= FULL_SITE_ROOT . 'candle/view/' . $candle['candle_id'] ?>">Подробнее</a>
                             </div>
+                            <div class="text-center"><a class="btn btn-primary"
+                                                        href="<?= FULL_SITE_ROOT . 'candle/view/' . $candle['candle_id'] ?>">В корзину</a>
+                            </div>
                         </div>
                     </div>
                 </div>

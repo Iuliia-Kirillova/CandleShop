@@ -1,5 +1,11 @@
 <?php include_once('./views/common/header.php'); ?>
 
+<?php if (!$this->isAuthorized): ?>
+
+    <?php header('Location: ' . FULL_SITE_ROOT . 'auth'); ?>
+
+<?php else: ?>
+
 <?php if ($result): ?>
 <p>Done!</p>
 <?php else: ?>
@@ -65,4 +71,6 @@
 
     <?php endif; ?>
 
-    <?php include_once('./views/common/footer.php'); ?>
+<?php endif; ?>
+
+<?php include_once('./views/common/footer.php'); ?>
