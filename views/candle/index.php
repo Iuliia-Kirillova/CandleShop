@@ -21,7 +21,7 @@
                                 <!-- Product name-->
                                 <h5 class="fw-bolder"><?= $candle['candle_name']; ?></h5>
                                 <!-- Product price-->
-                                $40.00 - $80.00
+                                <?= $candle['candle_price']; ?>
                             </div>
                         </div>
                         <!-- Product actions-->
@@ -29,8 +29,8 @@
                             <div class="text-center"><a class="btn btn-outline-dark mt-auto"
                                                         href="<?= FULL_SITE_ROOT . 'candle/view/' . $candle['candle_id'] ?>">Подробнее</a>
                             </div>
-                            <div class="text-center"><a class="btn btn-primary"
-                                                        href="<?= FULL_SITE_ROOT . 'candle/view/' . $candle['candle_id'] ?>">В корзину</a>
+                            <div class="text-center"><a class="btn btn-primary add_to_cart" id="<?= $candle['candle_id']; ?>"
+                                                        href="<?= FULL_SITE_ROOT . 'cart/addAjax/' . $candle['candle_id'] ?>">В корзину</a>
                             </div>
                         </div>
                     </div>

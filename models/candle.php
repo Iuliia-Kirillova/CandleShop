@@ -82,6 +82,20 @@ class Candle
         return mysqli_fetch_assoc($result);
     }
 
+    public function getByIds($ids)
+    {
+        $candles = array();
+
+        $idString = implode(',', $ids);
+
+        $query = "
+        SELECT * FROM `candles` 
+        WHERE `candle_id` IN ($idString);
+    ";
+        $result = mysqli_query($this->connect, $query);
+        return mysqli_fetch_assoc($result);
+    }
+
     public function deleteCandle($id)
     {
         $query = "
