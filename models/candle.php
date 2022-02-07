@@ -89,11 +89,25 @@ class Candle
         $idString = implode(',', $ids);
 
         $query = "
-        SELECT * FROM `candles` 
+        SELECT * FROM `candles`  
         WHERE `candle_id` IN ($idString);
     ";
+
         $result = mysqli_query($this->connect, $query);
-        return mysqli_fetch_assoc($result);
+
+        $i=0;
+        while ($row = $result->fetch_assoc()) {
+            $candles[$i]['candle_id'] = $row['candle_id'];
+            $candles[$i]['candle_name'] = $row['candle_name'];
+//            $candles[$i]['candle_img'] = $row['candle_img'];
+//            $candles[$i]['candle_volume_id '] = $row['candle_volume_id '];
+//            $candles[$i]['candle_smell'] = $row['candle_smell'];
+//            $candles[$i]['candle_description'] = $row['candle_description'];
+            $candles[$i]['candle_price'] = $row['candle_price'];
+//            $candles[$i]['candle_average_mark'] = $row['candle_average_mark'];
+            $i++;
+        }
+        return $candles;
     }
 
     public function deleteCandle($id)

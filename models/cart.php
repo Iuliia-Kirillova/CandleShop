@@ -45,19 +45,19 @@ public function getCandles()
 
 }
 
-//public function getTotalPrice($candles)
-//{
-//    $candleInCard = self::getCandles();
-//
-//    $total = 0;
-//
-//    if ($candleInCard) {
-//        foreach ($candles as $candle) {
-//            $total += $candle['candle_price'] * $candleInCard[$candle['candle_id']];
-//        }
-//    }
-//    return $total;
-//}
+public function getTotalPrice($candles)
+{
+    $candleInCard = self::getCandles();
+
+    $total = 0;
+
+    if ($candleInCard) {
+        foreach ($candles as $candle) {
+            $total += $candle['candle_price'] * $candleInCard[$candle['candle_id']];
+        }
+    }
+    return $total;
+}
 
 
 }

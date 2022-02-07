@@ -35,12 +35,9 @@ class CartController
 
         if ($candleInCart) {
             $candelesId = array_keys($candleInCart);
-
             $candles = $this->candleModel->getByIds($candelesId);
-            echo '<pre>'; print_r($candles);
-            print_r($candles['candle_id']);
 
-//            $totalPrice = $this->cartModel->getTotalPrice($candles);
+            $totalPrice = $this->cartModel->getTotalPrice($candles);
         }
         include_once('./views/basket/basket.php');
         return true;
