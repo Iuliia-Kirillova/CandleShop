@@ -23,6 +23,13 @@ public function addCandle($id)
     return self::countItems();
 }
 
+public function clear()
+    {
+        if (isset($_SESSION['candles'])) {
+            unset($_SESSION['candles']);
+        }
+    }
+
 public function countItems()
 {
     if (isset($_SESSION['candles'])) {

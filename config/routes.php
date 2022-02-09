@@ -30,6 +30,7 @@
             'basket' => 'basket',
             'cart/add/([0-9]+)' => 'add/$1',
             'cart/addAjax/([0-9]+)' => 'addAjax/$1',
+            'checkout' => 'checkout',
         ),
 //        'ErrorController' => array(
 //            '*' => 'error',
