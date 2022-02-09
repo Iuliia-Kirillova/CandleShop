@@ -5,16 +5,19 @@ class UserController
     private $userModel;
     private $connection;
     public $isAuthorized;
+    private $cartModel;
 
     public function __construct()
     {
         $this->userModel = new User();
         $this->connection = DB::getConnection();
+        $this->cartModel = new Cart();
     }
 
     public function actionReg()
     {
         $title = "Регистрация";
+        $sum = $this->cartModel->getSumma();
         $errors = [];
 
         if (isset($_POST['user_login'])) {
@@ -90,6 +93,7 @@ class UserController
     public function actionAuth()
     {
         $title = "Авторизация";
+        $sum = $this->cartModel->getSumma();
         $errors = [];
 
         if (isset($_POST['user_login'])) {

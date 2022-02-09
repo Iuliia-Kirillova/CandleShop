@@ -5,17 +5,20 @@ class CabinetController
     public $isAuthorized;
     private $connection;
     private $userModel;
+    private $cartModel;
 
     public function __construct()
     {
         $this->isAuthorized = (new User())->userIsAuthorized();
         $this->userModel = new User();
         $this->connection = DB::getConnection();
+        $this->cartModel = new Cart();
     }
 
     public function actionCabinet() {
 
         $title = 'Личный кабинет';
+        $sum = $this->cartModel->getSumma();
 
         $user = $this->userModel->getUserById();
 

@@ -36,24 +36,33 @@ public function countItems()
     }
 }
 
-public function getCandles()
+public function getCandlesInCart()
 {
     if (isset($_SESSION['candles'])) {
         return $_SESSION['candles'];
     }
     return false;
+}
 
+public function getSumma()
+{
+    $candleInCard = self::getCandlesInCart();
+    if (isset($_SESSION['candles'])) {
+        $sum = array_sum($candleInCard);
+        return $sum;
+    }
+    return 0;
 }
 
 public function getTotalPrice($candles)
 {
-    $candleInCard = self::getCandles();
-
+    $candleInCard = self::getCandlesInCart();
     $total = 0;
 
     if ($candleInCard) {
         foreach ($candles as $candle) {
             $total += $candle['candle_price'] * $candleInCard[$candle['candle_id']];
+
         }
     }
     return $total;

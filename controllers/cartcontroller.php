@@ -23,7 +23,6 @@ class CartController
     {
         echo $this->cartModel->addCandle($id);
         return true;
-
     }
 
     public function actionBasket()
@@ -31,15 +30,20 @@ class CartController
         $title = "Basket";
         $candleInCard = false;
 
-        $candleInCart = $this->cartModel->getCandles();
+        $candleInCart = $this->cartModel->getCandlesInCart();
+        $sum = $this->cartModel->getSumma();
 
         if ($candleInCart) {
             $candelesId = array_keys($candleInCart);
             $candles = $this->candleModel->getByIds($candelesId);
 
             $totalPrice = $this->cartModel->getTotalPrice($candles);
+
+
         }
         include_once('./views/basket/basket.php');
+        include_once('./views/common/header.php');
+
         return true;
     }
 }

@@ -7,6 +7,7 @@ class CandleController
     private $userModel;
     private $connection;
     public $isAuthorized;
+    private $cartModel;
 
     public function __construct()
     {
@@ -15,11 +16,13 @@ class CandleController
         $this->userModel = new User();
         $this->connection = DB::getConnection();
         $this->isAuthorized = (new User())->userIsAuthorized();
+        $this->cartModel = new Cart();
     }
 
     public function actionIndex($page = 1)
     {
         $title = 'Каталог свечей';
+        $sum = $this->cartModel->getSumma();
         $limit = 6;
         $offset = ($page - 1) * $limit;
         $candlesInfo = $this->candleModel->getList($offset, $limit);
