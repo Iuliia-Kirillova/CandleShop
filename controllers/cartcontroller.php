@@ -5,6 +5,8 @@ class CartController
     private $cartModel;
     private $candleModel;
     private $userModel;
+    private $connection;
+    private $orderModel;
     public $isAuthorized;
 
     public function __construct()
@@ -12,6 +14,8 @@ class CartController
         $this->candleModel = new Candle();
         $this->cartModel = new Cart;
         $this->userModel = new User();
+        $this->orderModel = new Order();
+        $this->connection = DB::getConnection();
         $this->isAuthorized = (new User())->userIsAuthorized();
     }
 
@@ -73,7 +77,7 @@ class CartController
             if (!$phone) {
                 $errors[] = 'Введите phone!';
             }
-            if (preg_match("/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/", $phone)) {
+            if (preg_match("/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/", $phone)) {
             } else {
                 $errors[] = 'Введите корректный телефон!';
             }
@@ -88,14 +92,15 @@ class CartController
                     $userId = false;
                 }
 
-                $result = $this->orderModel->save();
+                $result = $this->orderModel->save($name, $phone, $comment, $userId, $candlesInCart);
 
                 if ($result) {
                     $adminEmail = 'yvkirillova@yandex.ru';
                     $message = '...';
                     $subject = 'New order!';
-                    mail($adminEmail, $subject, $message);
+                    // TODO: отправка заказа на электронную почту
                     $this->cartModel->clear();
+                    $this->cartModel->getSumma();
                 }
             } else {
                 // Форма заполнена корректно? - Нет
@@ -103,7 +108,7 @@ class CartController
                 $candleInCart = $this->cartModel->getCandlesInCart();
                 $candlesIds = array_keys($candleInCart);
                 $candles = $this->candleModel->getByIds($candlesIds);
-                $totalPrice = $this->cartModel->getTotalPrice();
+                $totalPrice = $this->cartModel->getTotalPrice($candles);
                 $totalQuantity = $this->cartModel->getSumma();
             }
 
@@ -130,13 +135,12 @@ class CartController
                 if ($this->userModel->userIsAuthorized()) {
                     // Да, авторизирован
                     // Получаем информацию о пользователе из БД по id
-                    $userId = $_COOKIE['uid'];
-                    $user = $this->userModel->getUserById($userId);
+//                    $userId = $_COOKIE['uid'];
+                    $user = $this->userModel->getUserById();
                     // Подставляем в форму
-                    $user = $user['user_name'];
-//                    $phone = $user['user_phone'];
+                    $name = $user['user_name'];
+                    $phone = $user['user_phone'];
                 } else {
-                    // Нет
                     // Значения для формы пустые
                 }
             }

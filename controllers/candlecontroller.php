@@ -135,6 +135,7 @@ class CandleController
     public function actionView($id)
     {
         $title = "Описание свечи";
+        $sum = $this->cartModel->getSumma();
         $candle = $this->candleModel->getById($id);
         $userIsAlreadyVoted = $this->userModel->userAlreadyVoted($id);
         include_once('./views/candle/view.php');

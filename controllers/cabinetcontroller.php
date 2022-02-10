@@ -28,6 +28,7 @@ class CabinetController
     public function actionEdit() {
 
         $title = 'Редактирование данных';
+        $sum = $this->cartModel->getSumma();
         $errors = [];
         $user = $this->userModel->getUserById();
         $userId = $user['user_id'];
