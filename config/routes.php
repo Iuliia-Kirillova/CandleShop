@@ -33,8 +33,14 @@
             'checkout' => 'checkout',
             'cart/delete/([0-9]+)' => 'delete/$1',
         ),
+        'AboutController' => array(
+            'about' => 'about',
+        ),
+        'ContactController' => array(
+            'contact' => 'contact',
+        ),
         'ErrorController' => array(
-            '*' => 'error',
+//            '*' => 'error',
             '/([-a-z]+)' => 'error'
         )
     );

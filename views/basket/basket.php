@@ -11,7 +11,7 @@
                     <?php if ($candleInCart): ?>
                         <p>Вы выбрали такие товары:</p>
 
-                        <table class="table-bordered table-striped table">
+                        <table class="table table-hover table-sm">
                             <tr>
                                 <th>Название</th>
                                 <th>Стомость</th>
@@ -35,8 +35,8 @@
                                 </tr>
                             <?php endforeach; ?>
                             <tr>
-                                <td colspan="3">Общая стоимость</td>
-                                <td><?php echo $totalPrice; ?></td>
+                                <td colspan="3"><b>Общая стоимость<b></td>
+                                <td><b><?php echo $totalPrice; ?></b></td>
                             </tr>
                         </table>
 

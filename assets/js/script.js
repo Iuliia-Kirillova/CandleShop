@@ -1,4 +1,8 @@
+// const myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+
 const mainUrl = "http://localhost/oop_CS";
+
+
 
 function remove(name, id) {
 

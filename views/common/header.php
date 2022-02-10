@@ -28,8 +28,8 @@
             <li><a href="<?= FULL_SITE_ROOT . 'candles'; ?>"
                    class="nav-link px-2 link-dark <?= $title === 'Каталог свечей' ? 'active' : ''; ?>">Каталог
                     свечей</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">Про нас</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">Контакты</a></li>
+            <li><a href="<?= FULL_SITE_ROOT . 'about'; ?>" class="nav-link px-2 link-dark">Про нас</a></li>
+            <li><a href="<?= FULL_SITE_ROOT . 'contact'; ?>" class="nav-link px-2 link-dark">Контакты</a></li>
         </ul>
 
         <div class="col-md-3 text-center">
