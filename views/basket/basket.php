@@ -10,32 +10,38 @@
 
                     <?php if ($candleInCart): ?>
                         <p>Вы выбрали такие товары:</p>
-                        <table class="table table-hover">
+
+                        <table class="table-bordered table-striped table">
                             <tr>
-                                <th></th>
                                 <th>Название</th>
                                 <th>Стомость</th>
-                                <th>Количество</th>
-
+                                <th>Количество, шт</th>
+                                <th>Удалить</th>
                             </tr>
                             <?php foreach ($candles as $candle): ?>
                                 <tr>
                                     <td>
-                                        <button type="delete" class="btn btn-danger">x</button>
-                                    </td>
-                                    <td>
-                                        <a href="<?= FULL_SITE_ROOT . 'candle/view/' . $candle['candle_id'] ?>"><?php echo $candle['candle_name']; ?></a>
+                                        <a href="<?= FULL_SITE_ROOT . 'candle/view/' . $candle['candle_id'] ?>">
+                                            <?php echo $candle['candle_name']; ?>
+                                        </a>
                                     </td>
                                     <td><?php echo $candle['candle_price']; ?></td>
-                                    <td><?php echo $candleInCart[$candle['candle_id']]; ?></td
+                                    <td><?php echo $candleInCart[$candle['candle_id']]; ?></td>
+                                    <td>
+                                        <a class="btn btn-default checkout" href="<?= FULL_SITE_ROOT . 'cart/delete/' . $candle['candle_id'] ?>">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                             <tr>
-                                <td colspan="3">Общая стоимость:</td>
+                                <td colspan="3">Общая стоимость</td>
                                 <td><?php echo $totalPrice; ?></td>
                             </tr>
                         </table>
-                        <a type="button" class="btn btn-primary" href="<?= FULL_SITE_ROOT . 'checkout' ?>">Оформить заказ</a>
+
+                        <a type="button" class="btn btn-primary" href="<?= FULL_SITE_ROOT . 'checkout' ?>">Оформить
+                            заказ</a>
                     <?php else: ?>
                         <p>Корзина пуста</p>
                     <?php endif; ?>

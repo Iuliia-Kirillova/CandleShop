@@ -75,5 +75,12 @@ public function getTotalPrice($candles)
     return $total;
 }
 
+    public function deleteCandleInCart($id)
+    {
+            $candleInCart = self::getCandlesInCart();
+            unset($candleInCart[$id]);
+            $_SESSION['candles'] = $candleInCart;
+    }
+
 
 }

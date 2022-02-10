@@ -149,4 +149,15 @@ class CartController
 
         return true;
     }
+
+    public function actionDelete($id)
+    {
+        if (!isset($id)) {
+            echo "Страница не найдена";
+            exit();
+        }
+
+        $this->cartModel->deleteCandleInCart($id);
+        header('Location: ' . FULL_SITE_ROOT . 'basket');
+    }
 }

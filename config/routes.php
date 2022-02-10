@@ -31,9 +31,10 @@
             'cart/add/([0-9]+)' => 'add/$1',
             'cart/addAjax/([0-9]+)' => 'addAjax/$1',
             'checkout' => 'checkout',
+            'cart/delete/([0-9]+)' => 'delete/$1',
         ),
-//        'ErrorController' => array(
-//            '*' => 'error',
-//            '/([-a-z]+)' => 'error'
-//        )
+        'ErrorController' => array(
+            '*' => 'error',
+            '/([-a-z]+)' => 'error'
+        )
     );
