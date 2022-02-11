@@ -38,6 +38,7 @@
                     </button>
                 <?php endif; ?>
 
+                <?php if (!$this->checkAdmin): ?>
                 <div>
                     <?php for ($i = 1; $i <= 5; $i++): ?>
                         <?php if ($candle['candle_average_mark'] >= $i): ?>
@@ -58,6 +59,8 @@
                     <?= $candle['candle_average_mark']; ?>
                 </span>
                 </div>
+                <?php endif; ?>
+
             </div>
         </div>
     </div>
