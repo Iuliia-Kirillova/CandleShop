@@ -6,6 +6,7 @@ class CabinetController
     private $connection;
     private $userModel;
     private $cartModel;
+    public $checkAdmin;
 
     public function __construct()
     {
@@ -13,6 +14,7 @@ class CabinetController
         $this->userModel = new User();
         $this->connection = DB::getConnection();
         $this->cartModel = new Cart();
+        $this->checkAdmin = (new Admin())->checkAdmin();
     }
 
     public function actionCabinet() {

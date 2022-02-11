@@ -7,6 +7,7 @@ class CandleController
     private $userModel;
     private $connection;
     public $isAuthorized;
+    public $checkAdmin;
     private $cartModel;
 
     public function __construct()
@@ -16,6 +17,7 @@ class CandleController
         $this->userModel = new User();
         $this->connection = DB::getConnection();
         $this->isAuthorized = (new User())->userIsAuthorized();
+        $this->checkAdmin = (new Admin())->checkAdmin();
         $this->cartModel = new Cart();
     }
 
@@ -138,6 +140,7 @@ class CandleController
         $sum = $this->cartModel->getSumma();
         $candle = $this->candleModel->getById($id);
         $userIsAlreadyVoted = $this->userModel->userAlreadyVoted($id);
+
         include_once('./views/candle/view.php');
     }
 

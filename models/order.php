@@ -17,7 +17,6 @@ class Order
         INSERT INTO `orders` (`order_user_name`, `order_user_phone`, `order_user_comment`, `order_user_id`, `order_candles`) 
         VALUES ('$name', $phone, '$comment', $userId, '$candles');
         ";
-        print_r($query);
         return mysqli_query($this->connect, $query);
     }
 }

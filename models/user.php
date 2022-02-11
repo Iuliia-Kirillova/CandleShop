@@ -117,9 +117,11 @@ class User
             $result = mysqli_query($this->connection, $query);
             return mysqli_fetch_assoc($result);
 
-        } else {
-            echo "User not authorized";
         }
+//        else {
+//            echo "User not authorized";
+////            header('Location: ' . FULL_SITE_ROOT . 'auth');
+//        }
     }
 
     public function editUser($data, $id) {

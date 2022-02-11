@@ -22,6 +22,9 @@
             'reg' => 'reg',
             'logout' => 'logout'
         ),
+        'AdminController' => array(
+            'admin' => 'admin',
+        ),
         'CabinetController' => array(
             'profile' => 'cabinet',
             'cabinet/edit' => 'edit'

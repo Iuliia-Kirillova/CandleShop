@@ -1,4 +1,4 @@
-<? include_once("./views/common/header.php") ?>
+<?php include_once("./views/common/header.php") ?>
 
 <div class="container">
     <div class="row justify-content-center">
@@ -7,27 +7,30 @@
             <div class="card-body">
                 <h5 class="card-title"><?= $candle['candle_name']; ?></h5>
                 <p class="card-text"> Описание свечи </p>
-                <? if (!$userIsAlreadyVoted) : ?>
+                <?php if (!$this->checkAdmin): ?>
+                    <?php if (!$userIsAlreadyVoted) : ?>
                     <div>
                         Ваша оценка:
                     </div>
                     <div id="my-mark">
-                        <? for ($i = 1; $i <= 5; $i++): ?>
+                        <?php for ($i = 1; $i <= 5; $i++): ?>
                             <i class="far fa-star" data-mark=" <?= $i; ?> "></i>
-                        <? endfor; ?>
+                        <?php endfor; ?>
                         <button class="btn btn-primary mb-3" onclick="candleEvaluate(<?= $id; ?>)">Оценить</button>
 
                     </div>
-                <? endif; ?>
+                    <?php endif; ?>
                 <div>
                     Оценка:
                 </div>
+
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <a class="btn btn-primary add_to_cart" id="<?= $candle['candle_id']; ?>"
                        href="<?= FULL_SITE_ROOT . 'cart/addAjax/' . $candle['candle_id'] ?>">В корзину</a>
                 </div>
+                <?php endif; ?>
 
-                <?php if ($this->isAuthorized): ?>
+                <?php if ($this->checkAdmin): ?>
                     <a type="button" class="btn btn-success"
                        href="<?= FULL_SITE_ROOT . 'candle/edit/' . $candle['candle_id'] ?>"> Редактировать </a>
                     <button type="delete" class="btn btn-danger"
@@ -36,21 +39,21 @@
                 <?php endif; ?>
 
                 <div>
-                    <? for ($i = 1; $i <= 5; $i++): ?>
-                        <? if ($candle['candle_average_mark'] >= $i): ?>
+                    <?php for ($i = 1; $i <= 5; $i++): ?>
+                        <?php if ($candle['candle_average_mark'] >= $i): ?>
                             <i class="fas fa-star"></i>
-                        <? else: ?>
-                            <? if (($i - $candle['candle_average_mark']) > 1): ?>
+                        <?php else: ?>
+                            <?php if (($i - $candle['candle_average_mark']) > 1): ?>
                                 <i class="far fa-star"></i>
-                            <? else: ?>
-                                <? if (($i - $candle['candle_average_mark']) > 0.75): ?>
+                            <?php else: ?>
+                                <?php if (($i - $candle['candle_average_mark']) > 0.75): ?>
                                     <i class="far fa-star"></i>
-                                <? else: ?>
+                                <?php else: ?>
                                     <i class="fas fa-star-half-alt"></i>
-                                <? endif; ?>
-                            <? endif; ?>
-                        <? endif; ?>
-                    <? endfor; ?>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    <?php endfor; ?>
                     <span>
                     <?= $candle['candle_average_mark']; ?>
                 </span>
@@ -61,4 +64,4 @@
 </div>
 
 
-<? include_once("./views/common/footer.php") ?>
+<?php include_once("./views/common/footer.php") ?>

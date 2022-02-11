@@ -8,6 +8,7 @@ class CartController
     private $connection;
     private $orderModel;
     public $isAuthorized;
+    public $checkAdmin;
 
     public function __construct()
     {

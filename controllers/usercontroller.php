@@ -5,6 +5,7 @@ class UserController
     private $userModel;
     private $connection;
     public $isAuthorized;
+    public $checkAdmin;
     private $cartModel;
 
     public function __construct()
@@ -12,6 +13,7 @@ class UserController
         $this->userModel = new User();
         $this->connection = DB::getConnection();
         $this->cartModel = new Cart();
+//        $this->checkAdmin = (new Admin())->checkAdmin();
     }
 
     public function actionReg()
@@ -119,6 +121,7 @@ class UserController
 
     public function actionLogout() {
         $this->userModel->logout();
+        $sum = 0;
         header('Location: ' . FULL_SITE_ROOT . 'candles');
     }
 
