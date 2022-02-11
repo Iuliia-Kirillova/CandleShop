@@ -8,7 +8,14 @@
     </div>
 <?php endif; ?>
 
-<form method="post">
+
+<form method="post" enctype="multipart/form-data">
+    <input type="file"
+           class="form-control"
+           placeholder="Фото свечи"
+           value="<?= isset($id) ? $candle['candle_img'] : '' ?>"
+           name="candle_img" />
+
     <input type="text"
            class="form-control"
            placeholder="Название свечи"

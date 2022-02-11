@@ -1,5 +1,6 @@
 <?php include_once('./views/common/header.php'); ?>
 
+
 <?php if ($this->isAuthorized): ?>
     <?php if ($this->checkAdmin): ?>
         <div class="d-grid gap-2 col-6 mx-auto">

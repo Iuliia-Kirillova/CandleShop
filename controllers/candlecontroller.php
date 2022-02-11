@@ -45,9 +45,6 @@ class CandleController
             $name = htmlentities($_POST['candle_name']);
             $name = mysqli_real_escape_string($this->connection, $name);
 
-            $img = htmlentities($_POST['candle_img']);
-            $img = mysqli_real_escape_string($this->connection, $img);
-
             $volume = $_POST['candle_volume'];
 
             $smell = htmlentities($_POST['candle_smell']);
@@ -62,13 +59,17 @@ class CandleController
             if (empty($errors)) {
                 $this->candleModel->addCandle(array(
                     'name' => $name,
-                    'img' => $img,
                     'volume' => $volume,
                     'smell' => $smell,
                     'description' => $description,
                     'price' => $price
                 ));
             }
+
+            $id = $this->candleModel->getId();
+            if (is_uploaded_file($_FILES['candle_img']['tmp_name'])) {
+                move_uploaded_file($_FILES['candle_img']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/oop_CS/assets/img/{$id}.jpg");}
+
             header('Location: ' . FULL_SITE_ROOT . 'candles');
         }
 
@@ -115,7 +116,7 @@ class CandleController
                 'description' => $description,
                 'price' => $price
             ), $id);
-            header('Location: ' . FULL_SITE_ROOT . 'candles');
+            header('Location: ' . FULL_SITE_ROOT . 'candle/view/' . $id);
         }
     }
         $volumes = $this->volumeModel->getAll();

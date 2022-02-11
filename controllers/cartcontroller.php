@@ -22,12 +22,6 @@ class CartController
 
     public function actionAdd($id)
     {
-        $this->cartModel->addCandle($id);
-        header('Location: ' . FULL_SITE_ROOT . 'candles');
-    }
-
-    public function actionAddAjax($id)
-    {
         echo $this->cartModel->addCandle($id);
         return true;
     }
@@ -45,7 +39,6 @@ class CartController
             $candles = $this->candleModel->getByIds($candelesId);
 
             $totalPrice = $this->cartModel->getTotalPrice($candles);
-
 
         }
         include_once('./views/basket/basket.php');
