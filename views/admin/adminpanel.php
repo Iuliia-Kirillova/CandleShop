@@ -15,7 +15,7 @@
             <br/>
 
             <ul>
-                <li><a href="">Управление товарами</a></li>
+                <li><a href="<?= FULL_SITE_ROOT . 'candles' ?>">Управление товарами</a></li>
 
                 <li><a href="">Управление заказами</a></li>
             </ul>

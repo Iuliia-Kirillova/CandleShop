@@ -141,6 +141,7 @@ class CandleController
         $title = "Описание свечи";
         $sum = $this->cartModel->getSumma();
         $candle = $this->candleModel->getById($id);
+        $volumes = $this->volumeModel->getByIdCandle($id);
         $userIsAlreadyVoted = $this->userModel->userAlreadyVoted($id);
 
         include_once('./views/candle/view.php');

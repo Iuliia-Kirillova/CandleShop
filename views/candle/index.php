@@ -1,13 +1,7 @@
 <?php include_once('./views/common/header.php'); ?>
 
 
-<?php if ($this->isAuthorized): ?>
-    <?php if ($this->checkAdmin): ?>
-        <div class="d-grid gap-2 col-6 mx-auto">
-            <a type="button" class="btn btn-primary" href="<?= FULL_SITE_ROOT . 'candle/add' ?>">Добавить</a>
-        </div>
-    <?php endif; ?>
-<?php endif; ?>
+<?php if (!$this->checkAdmin): ?>
 
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
@@ -25,6 +19,7 @@
                                 <h5 class="fw-bolder"><?= $candle['candle_name']; ?></h5>
                                 <!-- Product price-->
                                 <?= $candle['candle_price']; ?>
+                                <p> <?= $candle['volume_value']; ?> мл.</p>
                             </div>
                         </div>
                         <!-- Product actions-->
@@ -50,6 +45,46 @@
 
 <?= $pagination->get(); ?>
 
+<?php else: ?>
 
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <a type="button" class="btn btn-primary" href="<?= FULL_SITE_ROOT . 'candle/add' ?>">Добавить</a>
+    </div>
+
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th> ID</th>
+        <th> Название</th>
+        <th> Объем</th>
+        <th> Аромат</th>
+        <th> Описание</th>
+        <th> Цена</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($candles as $candle): ?>
+        <tr>
+            <td> <?= $candle['candle_id']; ?> </td>
+            <td><a href="<?= FULL_SITE_ROOT . 'candle/view/' . $candle['candle_id'] ?>"><?= $candle['candle_name']; ?></a> </td>
+            <td> <?= $candle['volume_value']; ?> мл</td>
+            <td> <?= $candle['candle_smell']; ?> </td>
+            <td> <?= $candle['candle_description']; ?> </td>
+            <td> <?= $candle['candle_price']; ?> руб</td>
+            <td>
+
+                    <a type="button" class="btn btn-success"
+                       href="./candle_edit.php?id=<?= $candle['candle_id']; ?>"> Редактировать </a>
+                    <button type="delete" class="btn btn-danger"
+                            onclick="remove('candle', <?= $candle['candle_id']; ?>)"> Удалить
+                    </button>
+
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+
+<?php endif; ?>
 
 <?php include_once('./views/common/footer.php'); ?>

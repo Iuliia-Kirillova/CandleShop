@@ -7,6 +7,8 @@
             <div class="card-body">
                 <h5 class="card-title"><?= $candle['candle_name']; ?></h5>
                 <p class="card-text"> Описание свечи </p>
+                <p class="card-text"><?= $volumes['volume_value'] ?></p>
+                <p class="card-text"><?= $candle['candle_price']; ?> руб.</p>
                 <?php if (!$this->checkAdmin): ?>
                     <?php if (!$userIsAlreadyVoted) : ?>
                     <div>
