@@ -19,4 +19,6 @@ class Order
         ";
         return mysqli_query($this->connect, $query);
     }
+
+
 }

@@ -24,6 +24,8 @@
         ),
         'AdminController' => array(
             'admin' => 'admin',
+            'history' => 'history',
+            'history/view/([0-9]+)' => 'history/$1',
         ),
         'CabinetController' => array(
             'profile' => 'cabinet',
