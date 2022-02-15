@@ -128,7 +128,6 @@ class User
         $query = "
         UPDATE `users`
         SET `user_name` = '$data[name]',
-        `user_login` = '$data[login]',
         `user_password` = '$data[password]',
         `user_phone` = '$data[phone]',
         `user_email` = '$data[email]'

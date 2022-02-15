@@ -7,6 +7,8 @@ class AdminController
     public $checkAdmin;
     private $historyModel;
     private $candleModel;
+    private $orderModel;
+    private $cartModel;
 
     public function __construct()
     {
@@ -15,12 +17,14 @@ class AdminController
         $this->checkAdmin = (new Admin())->checkAdmin();
         $this->historyModel = new History;
         $this->candleModel = new Candle();
+        $this->orderModel = new Order();
+        $this->cartModel = new Cart();
     }
 
 
     public function actionAdmin()
     {
-        $title = "AdminPanel";
+        $title = "Здравствуйте, Администратор!";
 
         if (!$this->checkAdmin) {
             echo "Sorry";
@@ -30,18 +34,31 @@ class AdminController
         return true;
     }
 
-    public function actionHistory()
+    public function actionHistories()
     {
         $title = "История заказов";
 
         $orders = $this->historyModel->getHistory();
-        print_r($orders);
 
-//        $candlesQuantity = json_decode($orders['order_candles'], true);
-//        $candlesIds = array_keys($candlesQuantity);
-//        $candles = $this->candleModel->getById($candlesIds);
-
-        include_once('./views/admin/history.php');
-
+        include_once('./views/admin/histories.php');
     }
+
+    public function actionHistory($id)
+    {
+        $title = "Подробности заказа";
+
+        $total = 0;
+        $order = $this->orderModel->getById($id);
+        $candlesQuantity = json_decode($order['order_candles'], true);
+        $candlesIds = array_keys($candlesQuantity);
+        $candles = $this->candleModel->getByIds($candlesIds);
+
+        foreach ($candles as $candle) {
+            $total += $candle['candle_price'] * $candlesQuantity[$candle['candle_id']];
+        };
+
+        include_once('./views/admin/view.php');
+        return true;
+    }
+
 }

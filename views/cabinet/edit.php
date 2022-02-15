@@ -27,7 +27,7 @@
         <label class="form-label">
             Login
         </label>
-        <input type="text" class="form-control" name="user_login" value="<?php echo $user['user_login']; ?>">
+        <input type="text" class="form-control" name="user_login" value="<?php echo $user['user_login']; ?>" disabled>
     </div>
 
     <div class="mb-3">

@@ -7,6 +7,7 @@ class CabinetController
     private $userModel;
     private $cartModel;
     public $checkAdmin;
+    private $orderModel;
 
     public function __construct()
     {
@@ -15,6 +16,7 @@ class CabinetController
         $this->connection = DB::getConnection();
         $this->cartModel = new Cart();
         $this->checkAdmin = (new Admin())->checkAdmin();
+        $this->orderModel = new Order();
     }
 
     public function actionCabinet() {
@@ -37,14 +39,7 @@ class CabinetController
 
         $result = false;
 
-        if (isset($_POST['user_login'])) {
-            $login = htmlentities($_POST['user_login']);
-            $login = mysqli_real_escape_string($this->connection, $login);
-            if (!$login) {$errors[] = 'Введите логин!';}
-            if (preg_match("/^[a-z0-9_-]{2,20}$/i", $login)) {
-            } else {
-                $errors[] = 'В логине допускаются только латинские буквы, цифры, - и _';
-            }
+        if (isset($_POST['user_name'])) {
 
             $name = htmlentities($_POST['user_name']);
             $name = mysqli_real_escape_string($this->connection, $name);
@@ -97,7 +92,6 @@ class CabinetController
                 if (empty($errors)) {
                     $this->userModel->editUser(array(
                         'name' => $name,
-                        'login' => $login,
                         'password' => $password,
                         'phone' => $phone,
                         'email' => $email
@@ -107,6 +101,18 @@ class CabinetController
             }
         }
         include_once('./views/cabinet/edit.php');
+    }
+
+    public function actionHistory($id) {
+
+        $title = "Ваши заказы";
+        $sum = $this->cartModel->getSumma();
+
+        $orders = $this->orderModel->getByUserId($id);
+        print_r($orders);
+
+        include_once('./views/cabinet/history.php');
+        return true;
     }
 }
 

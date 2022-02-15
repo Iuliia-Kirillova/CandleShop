@@ -24,12 +24,13 @@
         ),
         'AdminController' => array(
             'admin' => 'admin',
-            'history' => 'history',
+            'histories' => 'histories',
             'history/view/([0-9]+)' => 'history/$1',
         ),
         'CabinetController' => array(
             'profile' => 'cabinet',
-            'cabinet/edit' => 'edit'
+            'cabinet/edit/([0-9]+)' => 'edit/$1',
+            'cabinet/history/([0-9]+)' => 'history/$1'
         ),
         'CartController' => array(
             'basket' => 'basket',

@@ -1,4 +1,6 @@
-<?php include_once('./views/common/header_admin.php'); ?>
+<?php include_once('./views/common/header.php'); ?>
+
+<h1 <? $title ?>></h1>
 
 <table class="table table-striped table-hover">
     <thead>

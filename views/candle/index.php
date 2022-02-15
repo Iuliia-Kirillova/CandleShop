@@ -30,7 +30,7 @@
                             <?php if (!$this->checkAdmin): ?>
                                 <div class="text-center"><a class="btn btn-primary add_to_cart"
                                                             id="<?= $candle['candle_id']; ?>"
-                                                            href="<?= FULL_SITE_ROOT . 'cart/addAjax/' . $candle['candle_id'] ?>">В
+                                                            href="<?= FULL_SITE_ROOT . 'cart/add/' . $candle['candle_id'] ?>">В
                                         корзину</a>
                                 </div>
                             <?php endif; ?>

@@ -20,5 +20,24 @@ class Order
         return mysqli_query($this->connect, $query);
     }
 
+    public function getById($id)
+    {
+        $query = "
+        SELECT * FROM `orders`
+        WHERE `order_id` = $id;
+        ";
+        $result = mysqli_query($this->connect, $query);
+        return mysqli_fetch_assoc($result);
+    }
 
+    public function getByUserId($id)
+    {
+        $query = "
+        SELECT * FROM `orders`
+        LEFT JOIN `users` ON `user_id` = `order_user_id`
+        WHERE `order_user_id` = 22;
+        ";
+        $result = mysqli_query($this->connect, $query);
+        return mysqli_fetch_assoc($result);
+    }
 }

@@ -110,7 +110,12 @@ class UserController
             $userId = $this->userModel->checkUserByLoginAndPassword($login, $password);
             if ($userId > 0) {
                 $this->userModel->auth($userId);
-                header('Location: ' . FULL_SITE_ROOT . 'profile');
+                if ($login == 'admin') {
+                    header('Location: ' . FULL_SITE_ROOT . 'admin');
+                } else {
+                    header('Location: ' . FULL_SITE_ROOT . 'profile');
+                }
+
             } else {
                 $errors[] = 'Такой связки логин/пароль не найдено!';
             }
