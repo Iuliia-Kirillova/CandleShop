@@ -15,7 +15,7 @@ class AdminController
 
         $this->isAuthorized = (new User())->userIsAuthorized();
         $this->checkAdmin = (new Admin())->checkAdmin();
-        $this->historyModel = new History;
+//        $this->historyModel = new History;
         $this->candleModel = new Candle();
         $this->orderModel = new Order();
         $this->cartModel = new Cart();
@@ -38,7 +38,7 @@ class AdminController
     {
         $title = "История заказов";
 
-        $orders = $this->historyModel->getHistory();
+        $orders = $this->orderModel->getHistory();
 
         include_once('./views/admin/histories.php');
     }
@@ -47,6 +47,7 @@ class AdminController
     {
         $title = "Подробности заказа";
 
+        $sum = $this->cartModel->getSumma();
         $total = 0;
         $order = $this->orderModel->getById($id);
         $candlesQuantity = json_decode($order['order_candles'], true);

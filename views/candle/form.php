@@ -8,6 +8,8 @@
     </div>
 <?php endif; ?>
 
+<img class="card-img-top" src="<?= IMG . $candle['candle_id'] . '.jpg' ?>" width="300px" style="text-align: center "alt="Photo">
+
 
 <form method="post" enctype="multipart/form-data">
     <input type="file"

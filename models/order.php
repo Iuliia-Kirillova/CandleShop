@@ -34,10 +34,19 @@ class Order
     {
         $query = "
         SELECT * FROM `orders`
-        LEFT JOIN `users` ON `user_id` = `order_user_id`
-        WHERE `order_user_id` = 22;
+
+        WHERE `order_user_id` = $id;
         ";
         $result = mysqli_query($this->connect, $query);
-        return mysqli_fetch_assoc($result);
+        return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
+
+    public function getHistory()
+    {
+        $query = "
+        SELECT * FROM `orders`;
+        ";
+        $result = mysqli_query($this->connect, $query);
+        return mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
 }

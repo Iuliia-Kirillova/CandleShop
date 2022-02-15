@@ -8,6 +8,7 @@ class CabinetController
     private $cartModel;
     public $checkAdmin;
     private $orderModel;
+    private $candleModel;
 
     public function __construct()
     {
@@ -17,6 +18,7 @@ class CabinetController
         $this->cartModel = new Cart();
         $this->checkAdmin = (new Admin())->checkAdmin();
         $this->orderModel = new Order();
+        $this->candleModel = new Candle();
     }
 
     public function actionCabinet() {
@@ -109,7 +111,6 @@ class CabinetController
         $sum = $this->cartModel->getSumma();
 
         $orders = $this->orderModel->getByUserId($id);
-        print_r($orders);
 
         include_once('./views/cabinet/history.php');
         return true;

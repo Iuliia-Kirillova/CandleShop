@@ -18,7 +18,7 @@
                                 <!-- Product name-->
                                 <h5 class="fw-bolder"><?= $candle['candle_name']; ?></h5>
                                 <!-- Product price-->
-                                <?= $candle['candle_price']; ?>
+                                <h6><?= $candle['candle_price']; ?> руб. </h6>
                                 <p> <?= $candle['volume_value']; ?> мл.</p>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
     </div>
 </section>
 
-<?= $pagination->get(); ?>
+
 
 <?php else: ?>
 
@@ -74,7 +74,7 @@
             <td>
 
                     <a type="button" class="btn btn-success"
-                       href="./candle_edit.php?id=<?= $candle['candle_id']; ?>"> Редактировать </a>
+                       href="<?= FULL_SITE_ROOT . 'candle/edit/' . $candle['candle_id']; ?>"> Редактировать </a>
                     <button type="delete" class="btn btn-danger"
                             onclick="remove('candle', <?= $candle['candle_id']; ?>)"> Удалить
                     </button>
@@ -86,5 +86,7 @@
 </table>
 
 <?php endif; ?>
+
+<?= $pagination->get(); ?>
 
 <?php include_once('./views/common/footer.php'); ?>
