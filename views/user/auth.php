@@ -24,6 +24,8 @@ $isAuthorized = false;
         <input type="password" class="form-control" name="user_password" placeholder="">
     </div>
 
+    <div class="g-recaptcha" data-sitekey="КЛЮЧ_САЙТА"></div>
+
     <div class="col-auto">
         <button type="submit" class="btn btn-primary mb-3">Авторизироваться</button>
     </div>

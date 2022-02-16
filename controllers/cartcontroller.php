@@ -151,7 +151,6 @@ class CartController
             exit();
         }
 
-        $this->cartModel->deleteCandleInCart($id);
         header('Location: ' . FULL_SITE_ROOT . 'cart');
     }
 }

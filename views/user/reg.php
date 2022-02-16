@@ -35,7 +35,7 @@
         <label class="form-label">
             Phone
         </label>
-        <input type="tel" class="form-control" name="user_phone" placeholder="">
+        <input type="tel" class="form-control" name="user_phone" placeholder="+7(000)000-00-00">
     </div>
 
     <div class="mb-3">
@@ -51,6 +51,8 @@
         </label>
         <input type="password" class="form-control" name="user_repeat_password" placeholder="">
     </div>
+
+<!--    <div class="g-recaptcha" data-sitekey="КЛЮЧ_САЙТА"></div>-->
 
     <div class="col-auto">
         <button type="submit" class="btn btn-primary mb-3">Зарегистрироваться</button>

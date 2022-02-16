@@ -98,7 +98,7 @@ class CabinetController
                         'phone' => $phone,
                         'email' => $email
                     ), $userId);
-                    header('Location: ' . FULL_SITE_ROOT . 'profile');
+                    header('Location: ' . FULL_SITE_ROOT . 'cabinet');
                 }
             }
         }

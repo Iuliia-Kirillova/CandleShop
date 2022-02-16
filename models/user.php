@@ -31,17 +31,18 @@ class User
         return mysqli_fetch_assoc($result)['COUNT'];
     }
 
-    public function register($login, $email, $password)
+    public function register($login, $name, $email, $phone, $password)
     {
         $query =
             "INSERT INTO `users`
                 SET `user_login` = '$login',
+                    `user_name` = '$name',
+                    `user_phone` = '$phone',
                     `user_email` = '$email',
                     `user_password` = '$password';
             ";
         mysqli_query($this->connection, $query);
-        $id = mysqli_insert_id($this->connection);
-        return $id;
+        return mysqli_insert_id($this->connection);
     }
 
     public function auth($userId)

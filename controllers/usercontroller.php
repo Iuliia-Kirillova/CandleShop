@@ -50,7 +50,7 @@ class UserController
             $phone = htmlentities($_POST['user_phone']);
             $phone = mysqli_real_escape_string($this->connection, $phone);
             if (!$phone) {$errors[] = 'Введите phone!';}
-            if (preg_match("/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/", $email)) {
+            if (preg_match("/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/", $phone)) {
             } else {
                 $errors[] = 'Введите корректный телефон!';
             }
@@ -81,7 +81,7 @@ class UserController
 
                 if (empty($errors)) {
                     $password = md5($password);
-                    $userId =  $this->userModel->register($login, $email, $password);
+                    $userId =  $this->userModel->register($login, $name, $email, $phone, $password);
                     $this->userModel->auth($userId);
                     header('Location: ' . FULL_SITE_ROOT . 'candles');
                 }
@@ -124,9 +124,10 @@ class UserController
     }
 
     public function actionLogout() {
-        $sum = $this->cartModel->getSumma();
+
+        unset($_SESSION['candles']);
         $this->userModel->logout();
-        $sum = 0;
+
 
         header('Location: ' . FULL_SITE_ROOT . 'candles');
     }
