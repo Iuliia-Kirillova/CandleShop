@@ -13,7 +13,6 @@ class UserController
         $this->userModel = new User();
         $this->connection = DB::getConnection();
         $this->cartModel = new Cart();
-//        $this->checkAdmin = (new Admin())->checkAdmin();
     }
 
     public function actionReg()
@@ -113,7 +112,7 @@ class UserController
                 if ($login == 'admin') {
                     header('Location: ' . FULL_SITE_ROOT . 'admin');
                 } else {
-                    header('Location: ' . FULL_SITE_ROOT . 'profile');
+                    header('Location: ' . FULL_SITE_ROOT . 'cabinet');
                 }
 
             } else {
@@ -125,8 +124,10 @@ class UserController
     }
 
     public function actionLogout() {
+        $sum = $this->cartModel->getSumma();
         $this->userModel->logout();
         $sum = 0;
+
         header('Location: ' . FULL_SITE_ROOT . 'candles');
     }
 

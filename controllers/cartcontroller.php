@@ -26,9 +26,9 @@ class CartController
         return true;
     }
 
-    public function actionBasket()
+    public function actionCart()
     {
-        $title = "Basket";
+        $title = "Cart";
         $candleInCard = false;
 
         $candleInCart = $this->cartModel->getCandlesInCart();
@@ -41,7 +41,7 @@ class CartController
             $totalPrice = $this->cartModel->getTotalPrice($candles);
 
         }
-        include_once('./views/basket/basket.php');
+        include_once('./views/cart/cart.php');
         include_once('./views/common/header.php');
 
         return true;
@@ -139,7 +139,7 @@ class CartController
                 }
             }
         }
-        include_once('./views/basket/checkout.php');
+        include_once('./views/cart/checkout.php');
 
         return true;
     }
@@ -152,6 +152,6 @@ class CartController
         }
 
         $this->cartModel->deleteCandleInCart($id);
-        header('Location: ' . FULL_SITE_ROOT . 'basket');
+        header('Location: ' . FULL_SITE_ROOT . 'cart');
     }
 }

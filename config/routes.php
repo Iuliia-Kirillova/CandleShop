@@ -1,6 +1,9 @@
 <?php
 
     $routes = array(
+        'MainController' => array(
+            'main' => 'main',
+        ),
         'VolumeController' => array(
             'volumes' => 'index',
             'volume/add' => 'add',
@@ -24,19 +27,19 @@
         ),
         'AdminController' => array(
             'admin' => 'admin',
-            'histories' => 'histories',
-            'history/view/([0-9]+)' => 'history/$1',
+            'history/view/([0-9]+)' => 'view/$1',
+            'history' => 'history',
         ),
         'CabinetController' => array(
-            'profile' => 'cabinet',
             'cabinet/edit/([0-9]+)' => 'edit/$1',
-            'cabinet/history/([0-9]+)' => 'history/$1'
+            'cabinet/history/([0-9]+)' => 'history/$1',
+            'cabinet' => 'cabinet',
         ),
         'CartController' => array(
-            'basket' => 'basket',
             'cart/add/([0-9]+)' => 'add/$1',
-            'checkout' => 'checkout',
             'cart/delete/([0-9]+)' => 'delete/$1',
+            'cart' => 'cart',
+            'checkout' => 'checkout',
         ),
         'AboutController' => array(
             'about' => 'about',
@@ -45,7 +48,6 @@
             'contact' => 'contact',
         ),
         'ErrorController' => array(
-//            '*' => 'error',
-            '/([-a-z]+)' => 'error'
-        )
+            '([-a-z]+)' => 'error'
+        ),
     );

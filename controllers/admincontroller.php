@@ -34,16 +34,16 @@ class AdminController
         return true;
     }
 
-    public function actionHistories()
+    public function actionHistory()
     {
         $title = "История заказов";
 
         $orders = $this->orderModel->getHistory();
 
-        include_once('./views/admin/histories.php');
+        include_once('./views/admin/history.php');
     }
 
-    public function actionHistory($id)
+    public function actionView($id)
     {
         $title = "Подробности заказа";
 

@@ -34,7 +34,7 @@
         crossorigin="anonymous"></script>
 <script src="<?= JS . 'jquery.js'; ?>"></script>
 <script src="<?= JS . 'script.js'; ?>"></script>
-<script src="<?= JS . 'basket.js'; ?>"></script>
+<script src="<?= JS . 'cart.js'; ?>"></script>
 
 </body>
 </html>

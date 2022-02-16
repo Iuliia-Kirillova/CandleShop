@@ -57,7 +57,7 @@
             <div class="col-md-3 text-center">
 
                     <a type="button" class="btn btn-primary"
-                       href="<?= FULL_SITE_ROOT . 'basket'; ?>">
+                       href="<?= FULL_SITE_ROOT . 'cart'; ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-cart4"
                              viewBox="0 0 16 16">
@@ -76,7 +76,7 @@
                 <?php else: ?>
                     <?php if (!$this->checkAdmin): ?>
                         <a type="button" class="btn btn-primary"
-                           href="<?= FULL_SITE_ROOT . 'profile'; ?>">Profile</a>
+                           href="<?= FULL_SITE_ROOT . 'cabinet'; ?>">Profile</a>
 
                     <?php endif; ?>
                     <a type="button" class="btn btn-outline-primary me-2"

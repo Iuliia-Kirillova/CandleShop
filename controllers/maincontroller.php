@@ -1,9 +1,11 @@
 <?php
 
-
-
-class errorController {
-
+class MainController
+{
+    private $candleModel;
+    private $volumeModel;
+    private $userModel;
+    private $connection;
     public $isAuthorized;
     public $checkAdmin;
     private $cartModel;
@@ -19,17 +21,9 @@ class errorController {
         $this->cartModel = new Cart();
     }
 
-
-    public function actionError()
+    public function actionMain()
     {
-        $title = 'Ooops...';
-
-        $sum = $this->cartModel->getSumma();
-
-        header("HTTP/1.0 404 Not Found");
-        include_once('./views/common/error.php');
+        $title = "";
+        include_once('./views/common/main.php');
     }
 }
-
-
-
