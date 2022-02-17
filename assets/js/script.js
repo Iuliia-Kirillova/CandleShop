@@ -12,7 +12,7 @@ function remove(name, id) {
 }
 
 const mark = document.getElementById("my-mark");
-console.log(mark);
+// console.log(mark);
 const marks = document.querySelectorAll("#my-mark .fa-star")
 if (mark) {
     mark.addEventListener('mouseover', (event) => {

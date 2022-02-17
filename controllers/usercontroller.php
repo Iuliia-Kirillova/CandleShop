@@ -117,6 +117,7 @@ class UserController
 
             } else {
                 $errors[] = 'Такой связки логин/пароль не найдено!';
+                header('Location: ' . FULL_SITE_ROOT . 'reg');
             }
 //            header('Location: ' . FULL_SITE_ROOT . 'cabinet');
         }

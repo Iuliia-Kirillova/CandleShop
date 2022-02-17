@@ -28,7 +28,7 @@
 
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <a class="btn btn-primary add_to_cart" id="<?= $candle['candle_id']; ?>"
-                       href="<?= FULL_SITE_ROOT . 'cart/addAjax/' . $candle['candle_id'] ?>">В корзину</a>
+                       href="<?= FULL_SITE_ROOT . 'cart/add/' . $candle['candle_id'] ?>">В корзину</a>
                 </div>
                 <?php endif; ?>
 

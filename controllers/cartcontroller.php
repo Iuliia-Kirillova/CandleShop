@@ -150,6 +150,7 @@ class CartController
             echo "Страница не найдена";
             exit();
         }
+        $this->cartModel->deleteCandleInCart($id);
 
         header('Location: ' . FULL_SITE_ROOT . 'cart');
     }

@@ -68,7 +68,7 @@ class CandleController
 
             $id = $this->candleModel->getId();
             if (is_uploaded_file($_FILES['candle_img']['tmp_name'])) {
-                move_uploaded_file($_FILES['candle_img']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/oop_CS/assets/img/{$id}.jpg");}
+                move_uploaded_file($_FILES['candle_img']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/oop_CS/assets/images/{$id}.jpg");}
 
             header('Location: ' . FULL_SITE_ROOT . 'candle/view/' . $id);
         }
@@ -107,7 +107,7 @@ class CandleController
         if (empty($errors)) {
             $this->candleModel->editCandle(array(
                 'name' => $name,
-                'img' => $img,
+                'images' => $img,
                 'volume' => $volume,
                 'smell' => $smell,
                 'description' => $description,
@@ -115,7 +115,7 @@ class CandleController
             ), $id);
 
             if (is_uploaded_file($_FILES['candle_img']['tmp_name'])) {
-                move_uploaded_file($_FILES['candle_img']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/oop_CS/assets/img/{$id}.jpg");}
+                move_uploaded_file($_FILES['candle_img']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/oop_CS/assets/images/{$id}.jpg");}
 
             header('Location: ' . FULL_SITE_ROOT . 'candle/view/' . $id);
         }
