@@ -3241,14 +3241,12 @@ h6 {
 # Footer
 --------------------------------------------------------------*/
 .site-footer {
-  padding-top: 80px;
+
   position: relative;
 }
 
 @media (min-width: 1200px) {
-  .site-footer {
-    padding-top: 135px;
-  }
+
 }
 
 [class*="site-footer__shape-"] {
@@ -6082,13 +6080,13 @@ h6 {
 /* cart page */
 .cart-page {
   padding-top: 80px;
-  padding-bottom: 80px;
+
 }
 
 @media (min-width: 1200px) {
   .cart-page {
     padding-top: 120px;
-    padding-bottom: 120px;
+
   }
 }
 

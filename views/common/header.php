@@ -46,7 +46,7 @@
                     <img src="<?= IMG . 'candles (1).png' ?>" width="105" alt="">
                 </a>
                 <div class="mobile-nav__buttons">
-                    <a href="<?= FULL_SITE_ROOT . 'cart'; ?>" class="mini-cart__toggler"
+                    <a href="<?= FULL_SITE_ROOT . 'cart'; ?>"
                        style="text-decoration: none">
                         <i class="organik-icon-shopping-cart"></i>
                         </a>
@@ -162,6 +162,15 @@
     </div>
     <!-- /.mobile-nav__content -->
 </div>
+
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url(<?= IMG . 'backgrounds/1.jpg' ?>);"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <h2><?= $title ?></h2>
+
+    </div><!-- /.container -->
+</section><!-- /.page-header -->
 
 <!--<div class="m>
 
