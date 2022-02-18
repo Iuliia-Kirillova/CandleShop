@@ -6401,7 +6401,7 @@ h6 {
   margin: 0;
 }
 
-.product_detail_review a {
+.product_detail_review i {
   color: var(--thm-base);
   font-size: 16px;
 }

@@ -154,7 +154,7 @@
         <div class="mobile-nav__top">
             <!-- /.mobile-nav__language -->
             <div class="main-menu__login">
-                <a href="#"><i class="organik-icon-user"></i>Login / Register</a>
+                <a href="<?= FULL_SITE_ROOT . 'auth'; ?>"><i class="organik-icon-user"></i>Login / Register</a>
             </div><!-- /.main-menu__login -->
         </div><!-- /.mobile-nav__top -->
 
