@@ -17,7 +17,6 @@
           rel="stylesheet"/>
 
 
-
     <link rel="stylesheet" href="<?= ASSETS . 'vendors/bootstrap/bootstrap.min.css'; ?>"/>
     <link rel="stylesheet" href="<?= ASSETS . 'vendors/bootstrap-select/bootstrap-select.min.css'; ?>"/>
     <link rel="stylesheet" href="<?= ASSETS . 'vendors/animate/animate.min.css'; ?>"/>
@@ -46,10 +45,15 @@
                     <img src="<?= IMG . 'candles (1).png' ?>" width="105" alt="">
                 </a>
                 <div class="mobile-nav__buttons">
+                    <?php if ($this->isAuthorized): ?>
+                        <a href="<?= FULL_SITE_ROOT . 'cabinet'; ?>"
+                           style="text-decoration: none">
+                            <img src="<?= IMG . 'user.png'; ?>" width="45px" alt=""></a>
+                    <?php endif; ?>
                     <a href="<?= FULL_SITE_ROOT . 'cart'; ?>"
                        style="text-decoration: none">
-                        <i class="organik-icon-shopping-cart"></i>
-                        </a>
+                        <img src="<?= IMG . 'cart.png'; ?>" width="45px" alt=""></a>
+                    </a>
                 </div><!-- /.mobile__buttons -->
 
                 <span class="fa fa-bars mobile-nav__toggler"></span>
@@ -71,60 +75,58 @@
                     <i class="organik-icon-calling"></i>
                     <p>Phone<a href="tel:+92-666-888-0000">+7(921)123-45-67</a></p>
                 </div><!-- /.topbar__info -->
-   <?php if (!$this->checkAdmin): ?>
+                <?php if (!$this->checkAdmin): ?>
                 <div class="topbar__buttons">
                     <?php if ($this->isAuthorized): ?>
-                    <a href="<?= FULL_SITE_ROOT . 'cabinet'; ?>"
-                       style="text-decoration: none">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                        </svg></a>
+                        <a href="<?= FULL_SITE_ROOT . 'cabinet'; ?>"
+                           style="text-decoration: none">
+                            <img src="<?= IMG . 'user.png'; ?>" width="45px" alt=""></a>
                     <?php endif; ?>
                     <a href="<?= FULL_SITE_ROOT . 'cart'; ?>"
                        style="text-decoration: none">
-                        <i class="organik-icon-shopping-cart"></i>
-                         (<span id="cart_count"><?php echo $sum ?></span>)</a>
-   <?php else: ?>
+                        <img src="<?= IMG . 'cart.png'; ?>" width="45px" alt="">
+                        (<span id="cart_count"><?php echo $sum ?></span>)</a>
+                    <?php else: ?>
                     <div class="topbar__buttons">
                         <a href="<?= FULL_SITE_ROOT . 'admin'; ?>"
                            style="text-decoration: none">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-controller" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                                 class="bi bi-controller" viewBox="0 0 16 16">
                                 <path d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1v-1z"/>
                                 <path d="M3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .62.39c.655-.079 1.35-.117 2.043-.117.72 0 1.443.041 2.12.126a.5.5 0 0 1 .622-.399l1.932.518a.5.5 0 0 1 .306.729c.14.09.266.19.373.297.408.408.78 1.05 1.095 1.772.32.733.599 1.591.805 2.466.206.875.34 1.78.364 2.606.024.816-.059 1.602-.328 2.21a1.42 1.42 0 0 1-1.445.83c-.636-.067-1.115-.394-1.513-.773-.245-.232-.496-.526-.739-.808-.126-.148-.25-.292-.368-.423-.728-.804-1.597-1.527-3.224-1.527-1.627 0-2.496.723-3.224 1.527-.119.131-.242.275-.368.423-.243.282-.494.575-.739.808-.398.38-.877.706-1.513.773a1.42 1.42 0 0 1-1.445-.83c-.27-.608-.352-1.395-.329-2.21.024-.826.16-1.73.365-2.606.206-.875.486-1.733.805-2.466.315-.722.687-1.364 1.094-1.772a2.34 2.34 0 0 1 .433-.335.504.504 0 0 1-.028-.079zm2.036.412c-.877.185-1.469.443-1.733.708-.276.276-.587.783-.885 1.465a13.748 13.748 0 0 0-.748 2.295 12.351 12.351 0 0 0-.339 2.406c-.022.755.062 1.368.243 1.776a.42.42 0 0 0 .426.24c.327-.034.61-.199.929-.502.212-.202.4-.423.615-.674.133-.156.276-.323.44-.504C4.861 9.969 5.978 9.027 8 9.027s3.139.942 3.965 1.855c.164.181.307.348.44.504.214.251.403.472.615.674.318.303.601.468.929.503a.42.42 0 0 0 .426-.241c.18-.408.265-1.02.243-1.776a12.354 12.354 0 0 0-.339-2.406 13.753 13.753 0 0 0-.748-2.295c-.298-.682-.61-1.19-.885-1.465-.264-.265-.856-.523-1.733-.708-.85-.179-1.877-.27-2.913-.27-1.036 0-2.063.091-2.913.27z"/>
                             </svg>
-                            </a>
-   <?php endif; ?>
-                </div><!-- /.topbar__buttons -->
-            </div><!-- /.topbar__left -->
+                        </a>
+                        <?php endif; ?>
+                    </div><!-- /.topbar__buttons -->
+                </div><!-- /.topbar__left -->
 
-        </div><!-- /.container -->
-    </div><!-- /.topbar -->
-    <nav class="main-menu">
-        <div class="container">
-            <div class="main-menu__login">
-                <?php if (!$this->isAuthorized): ?>
-                <a href="<?= FULL_SITE_ROOT . 'auth'; ?>"><i class="organik-icon-user"></i>Login / Register</a>
-                <?php else: ?>
-                <a href="<?= FULL_SITE_ROOT . 'logout'; ?>"><i class="organik-icon-user"></i>Logout</a>
-                <?php endif; ?>
-            </div><!-- /.main-menu__login -->
-            <ul class="main-menu__list">
-                <li>
-                    <a href="<?= FULL_SITE_ROOT . 'main'; ?>">Home</a>
-                </li>
-                <li>
-                    <a href="<?= FULL_SITE_ROOT . 'about'; ?>">About</a>
-                </li>
-                <li>
-                    <a href="<?= FULL_SITE_ROOT . 'candles'; ?>">Shop</a>
-                </li>
-                <li><a href="<?= FULL_SITE_ROOT . 'contact'; ?>">Contact</a></li>
-            </ul>
+            </div><!-- /.container -->
+        </div><!-- /.topbar -->
+        <nav class="main-menu">
+            <div class="container">
+                <div class="main-menu__login">
+                    <?php if (!$this->isAuthorized): ?>
+                        <a href="<?= FULL_SITE_ROOT . 'reg'; ?>"><i class="organik-icon-user"></i>Login / Register</a>
+                    <?php else: ?>
+                        <a href="<?= FULL_SITE_ROOT . 'logout'; ?>"><i class="organik-icon-user"></i>Logout</a>
+                    <?php endif; ?>
+                </div><!-- /.main-menu__login -->
+                <ul class="main-menu__list">
+                    <li>
+                        <a href="<?= FULL_SITE_ROOT . 'main'; ?>">Home</a>
+                    </li>
+                    <li>
+                        <a href="<?= FULL_SITE_ROOT . 'about'; ?>">About</a>
+                    </li>
+                    <li>
+                        <a href="<?= FULL_SITE_ROOT . 'candles'; ?>">Shop</a>
+                    </li>
+                    <li><a href="<?= FULL_SITE_ROOT . 'contact'; ?>">Contact</a></li>
+                </ul>
 
-        </div><!-- /.container -->
-    </nav>
-    <!-- /.main-menu -->
+            </div><!-- /.container -->
+        </nav>
+        <!-- /.main-menu -->
 </header><!-- /.main-header -->
 
 <div class="mobile-nav__wrapper">
@@ -154,7 +156,11 @@
         <div class="mobile-nav__top">
             <!-- /.mobile-nav__language -->
             <div class="main-menu__login">
-                <a href="<?= FULL_SITE_ROOT . 'auth'; ?>"><i class="organik-icon-user"></i>Login / Register</a>
+                <?php if (!$this->isAuthorized): ?>
+                    <a href="<?= FULL_SITE_ROOT . 'reg'; ?>"><i class="organik-icon-user"></i>Login / Register</a>
+                <?php else: ?>
+                    <a href="<?= FULL_SITE_ROOT . 'logout'; ?>"><i class="organik-icon-user"></i>Logout</a>
+                <?php endif; ?>
             </div><!-- /.main-menu__login -->
         </div><!-- /.mobile-nav__top -->
 
@@ -187,7 +193,7 @@
 <!--<div class="container">-->
 <!---->
 <!--    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">-->
-<!--        <a href="--><?//= FULL_SITE_ROOT . 'candles' ?><!--"-->
+<!--        <a href="--><?php //= FULL_SITE_ROOT . 'candles' ?><!--"-->
 <!--           class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">-->
 <!--            <img-->
 <!--                    src="https://img.icons8.com/external-icongeek26-outline-icongeek26/64/000000/external-candles-buddhism-icongeek26-outline-icongeek26.png"/>-->
@@ -195,9 +201,9 @@
 <!--        </a>-->
 <!--        <div>-->
 <!--            <a type="button" class="btn btn-primary"-->
-<!--               href="--><?//= FULL_SITE_ROOT . 'admin'; ?><!--">AdminPanel</a>-->
+<!--               href="--><?php //= FULL_SITE_ROOT . 'admin'; ?><!--">AdminPanel</a>-->
 <!--            <a type="button" class="btn btn-outline-primary me-2"-->
-<!--               href="--><?//= FULL_SITE_ROOT . 'logout'; ?><!--">Exit</a>-->
+<!--               href="--><?php //= FULL_SITE_ROOT . 'logout'; ?><!--">Exit</a>-->
 <!--        </div>-->
 <!---->
 <!--    </header>-->
@@ -206,7 +212,7 @@
 <!---->
 <!--        <div class="container">-->
 <!--            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">-->
-<!--                <a href="--><?//= FULL_SITE_ROOT . 'main' ?><!--"-->
+<!--                <a href="--><?php //= FULL_SITE_ROOT . 'main' ?><!--"-->
 <!--                   class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">-->
 <!--                    <img-->
 <!--                            src="https://img.icons8.com/external-icongeek26-outline-icongeek26/64/000000/external-candles-buddhism-icongeek26-outline-icongeek26.png"/>-->
@@ -216,17 +222,20 @@
 <!--                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">-->
 <!--                    <li><a href="#" class="nav-link px-2 link-secondary"></a>-->
 <!--                    </li>-->
-<!--                    <li><a href="--><?//= FULL_SITE_ROOT . 'candles'; ?><!--"-->
-<!--                           class="nav-link px-2 link-dark --><?//= $title === 'Каталог свечей' ? 'active' : ''; ?><!--">Каталог-->
+<!--                    <li><a href="--><?php //= FULL_SITE_ROOT . 'candles'; ?><!--"-->
+<!--                           class="nav-link px-2 link-dark -->
+<?php //= $title === 'Каталог свечей' ? 'active' : ''; ?><!--">Каталог-->
 <!--                            свечей</a></li>-->
-<!--                    <li><a href="--><?//= FULL_SITE_ROOT . 'about'; ?><!--" class="nav-link px-2 link-dark">Про нас</a></li>-->
-<!--                    <li><a href="--><?//= FULL_SITE_ROOT . 'contact'; ?><!--" class="nav-link px-2 link-dark">Контакты</a></li>-->
+<!--                    <li><a href="-->
+<?php //= FULL_SITE_ROOT . 'about'; ?><!--" class="nav-link px-2 link-dark">Про нас</a></li>-->
+<!--                    <li><a href="-->
+<?php //= FULL_SITE_ROOT . 'contact'; ?><!--" class="nav-link px-2 link-dark">Контакты</a></li>-->
 <!--                </ul>-->
 <!---->
 <!--                <div class="col-md-3 text-center">-->
 <!---->
 <!--                    <a type="button" class="btn btn-primary"-->
-<!--                       href="--><?//= FULL_SITE_ROOT . 'cart'; ?><!--">-->
+<!--                       href="--><?php //= FULL_SITE_ROOT . 'cart'; ?><!--">-->
 <!--                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
 <!--                             class="bi bi-cart4"-->
 <!--                             viewBox="0 0 16 16">-->
@@ -237,19 +246,21 @@
 <!--                    --><?php //if (!$this->isAuthorized): ?>
 <!---->
 <!--                        <a type="button"-->
-<!--                           class="btn btn-outline-primary --><?//= $title === 'Авторизация' ? 'active' : ''; ?><!--"-->
-<!--                           href="--><?//= FULL_SITE_ROOT . 'auth'; ?><!--">Login</a>-->
-<!--                        <a type="button" class="btn btn-primary --><?//= $title === 'Регистрация' ? 'active' : ''; ?><!--"-->
-<!--                           href="--><?//= FULL_SITE_ROOT . 'reg'; ?><!--">Sign-up</a>-->
+<!--                           class="btn btn-outline-primary -->
+<?php //= $title === 'Авторизация' ? 'active' : ''; ?><!--"-->
+<!--                           href="--><?php //= FULL_SITE_ROOT . 'auth'; ?><!--">Login</a>-->
+<!--                        <a type="button" class="btn btn-primary -->
+<?php //= $title === 'Регистрация' ? 'active' : ''; ?><!--"-->
+<!--                           href="--><?php //= FULL_SITE_ROOT . 'reg'; ?><!--">Sign-up</a>-->
 <!---->
 <!--                    --><?php //else: ?>
 <!--                        --><?php //if (!$this->checkAdmin): ?>
 <!--                            <a type="button" class="btn btn-primary"-->
-<!--                               href="--><?//= FULL_SITE_ROOT . 'cabinet'; ?><!--">Profile</a>-->
+<!--                               href="--><?php //= FULL_SITE_ROOT . 'cabinet'; ?><!--">Profile</a>-->
 <!---->
 <!--                        --><?php //endif; ?>
 <!--                        <a type="button" class="btn btn-outline-primary me-2"-->
-<!--                           href="--><?//= FULL_SITE_ROOT . 'logout'; ?><!--">Exit</a>-->
+<!--                           href="--><?php //= FULL_SITE_ROOT . 'logout'; ?><!--">Exit</a>-->
 <!--                    --><?php //endif; ?>
 <!---->
 <!--                </div>-->

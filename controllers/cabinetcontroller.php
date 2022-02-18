@@ -23,10 +23,9 @@ class CabinetController
 
     public function actionCabinet() {
 
-        $title = 'Личный кабинет';
-        $sum = $this->cartModel->getSumma();
-
         $user = $this->userModel->getUserById();
+        $title = 'Здравствуйте, ' . $user['user_name'] . '!';
+        $sum = $this->cartModel->getSumma();
 
         include_once('./views/cabinet/cabinet.php');
     }

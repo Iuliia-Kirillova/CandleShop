@@ -31,6 +31,17 @@ class User
         return mysqli_fetch_assoc($result)['COUNT'];
     }
 
+    public function checkIfPhoneExists($phone)
+    {
+        $query = (new Select('users'))
+            ->what(['COUNT' => 'COUNT(*)'])
+            ->where("WHERE `user_phone` = '$phone'")
+            ->build();
+
+        $result = mysqli_query($this->connection, $query);
+        return mysqli_fetch_assoc($result)['COUNT'];
+    }
+
     public function register($login, $name, $email, $phone, $password)
     {
         $query =
@@ -41,6 +52,7 @@ class User
                     `user_email` = '$email',
                     `user_password` = '$password';
             ";
+        print_r($query);
         mysqli_query($this->connection, $query);
         return mysqli_insert_id($this->connection);
     }

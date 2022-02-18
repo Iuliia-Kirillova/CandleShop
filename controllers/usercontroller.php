@@ -79,6 +79,11 @@ class UserController
                     $errors[] = 'Пользователь с таким email уже есть';
                 }
 
+                $countRows = $this->userModel->checkIfPhoneExists($phone);
+                if ($countRows == 1) {
+                    $errors[] = 'Пользователь с таким телефоном уже есть';
+                }
+
                 if (empty($errors)) {
                     $password = md5($password);
                     $userId =  $this->userModel->register($login, $name, $email, $phone, $password);
@@ -103,8 +108,8 @@ class UserController
             $login = mysqli_real_escape_string($this->connection, $login);
 
             $password = htmlentities($_POST['user_password']);
+            $password = md5($password); // подправить скрытие пароля
             $password = mysqli_real_escape_string($this->connection, $password);
-//            $password = md5($password); // подправить скрытие пароля
 
             $userId = $this->userModel->checkUserByLoginAndPassword($login, $password);
             if ($userId > 0) {
@@ -117,7 +122,7 @@ class UserController
 
             } else {
                 $errors[] = 'Такой связки логин/пароль не найдено!';
-                header('Location: ' . FULL_SITE_ROOT . 'reg');
+//                header('Location: ' . FULL_SITE_ROOT . 'reg');
             }
 //            header('Location: ' . FULL_SITE_ROOT . 'cabinet');
         }

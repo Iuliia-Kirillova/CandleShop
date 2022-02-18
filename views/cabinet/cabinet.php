@@ -10,9 +10,6 @@
         <div class="container">
             <div class="row">
 
-                <h1>Кабинет пользователя</h1>
-
-                            <h3>Привет, <?php echo $user['user_name'];?>!</h3>
                 <ul>
                     <li><a href="<?= FULL_SITE_ROOT . 'cabinet/edit/' . $user['user_id']?>">Редактировать данные</a></li>
                     <li><a href="<?= FULL_SITE_ROOT . 'cabinet/history/' . $user['user_id']?>">Список покупок</a></li>
