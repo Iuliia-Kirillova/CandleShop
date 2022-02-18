@@ -10,64 +10,48 @@
 <p>Done!</p>
 <?php else: ?>
 
+<section class="contact-one">
 
-<?php if (count($errors) > 0): ?>
-    <div class="errors" style="color: red">
-        <?php foreach ($errors as $error): ?>
-            <p> <?= $error; ?> </p>
-        <?php endforeach; ?>
+    <div class="container">
 
-    </div>
-<?php endif; ?>
+        <?php if (count($errors) > 0): ?>
+            <div class="errors" style="color: red">
+                <?php foreach ($errors as $error): ?>
+                    <p> <?= $error; ?> </p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <form method="POST" class="contact-form-validated contact-one__form">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text" name="user_name" value="<?php echo $user['user_name']; ?>">
+                </div><!-- /.col-md-6 -->
+                <div class="col-md-6">
+                    <input type="text" value="<?php echo $user['user_login']; ?>" disabled name="user_login">
+                </div><!-- /.col-md-6 -->
+                <div class="col-md-6">
+                    <input type="text" value="<?php echo $user['user_email']; ?>" name="user_email">
+                </div><!-- /.col-md-6 -->
+                <div class="col-md-6">
+                    <input type="phone" value="<?php echo $user['user_phone']; ?>" name="user_phone">
+                </div><!-- /.col-md-6 -->
+                <div class="col-md-6">
+                    <input type="password" placeholder="Пароль" name="user_password">
+                </div><!-- /.col-md-6 -->
+                <div class="col-md-6">
+                    <input type="password" placeholder="Повторите пароль" name="user_repeat_password">
+                </div><!-- /.col-md-6 -->
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="thm-btn">Обновить данные</button>
+                </div><!-- /.col-md-12 -->
+            </div><!-- /.row -->
+        </form>
+    </div><!-- /.container -->
+</section><!-- /.contact-one -->
 
 
-<form method="POST">
 
-    <div class="mb-3">
-        <label class="form-label">
-            Login
-        </label>
-        <input type="text" class="form-control" name="user_login" value="<?php echo $user['user_login']; ?>" disabled>
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">
-            Name
-        </label>
-        <input type="text" class="form-control" name="user_name" value="<?php echo $user['user_name']; ?>">
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">
-            Email
-        </label>
-        <input type="email" class="form-control" name="user_email" value="<?php echo $user['user_email']; ?>">
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">
-            Phone
-        </label>
-        <input type="tel" class="form-control" name="user_phone" value="<?php echo $user['user_phone']; ?>">
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">
-            Password
-        </label>
-        <input type="password" class="form-control" name="user_password" value="<?php echo $user['user_password']; ?>">
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">
-            Repeat Password
-        </label>
-        <input type="password" class="form-control" name="user_repeat_password" placeholder="">
-    </div>
-
-    <div class="col-auto">
-        <button type="submit" class="btn btn-primary mb-3">Обновить</button>
-    </div>
 
     <?php endif; ?>
 

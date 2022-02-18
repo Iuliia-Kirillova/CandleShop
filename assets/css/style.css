@@ -11323,3 +11323,6 @@ textarea.form-control-lg {
     }
 }
 
+input[type="text"]:disabled { background: #abaaaa; }
+
+

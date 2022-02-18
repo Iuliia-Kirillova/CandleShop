@@ -1,15 +1,34 @@
 <?php include_once('./views/common/header.php'); ?>
 
-<section>
-    <div class="container">
-        <div class="row">
-            <ul>
-                <li><a href="<?= FULL_SITE_ROOT . 'cabinet/edit/13'?>">Редактирование данных</a></li>
-                <li><a href="<?= FULL_SITE_ROOT . 'candles' ?>">Управление товарами</a></li>
-                <li><a href="<?= FULL_SITE_ROOT . 'history' ?>">Управление заказами</a></li>
-            </ul>
+    <section>
 
-        </div>
+    <div class="container">
+
+        <div class="col">
+            <div class="about-one__box">
+                <h3><i class="fa fa-check-circle"></i> <a
+                            style="color: #383a39"
+                            href="<?= FULL_SITE_ROOT . 'cabinet/edit/' . $user ?>">Редактирование данных
+                            </a></h3>
+            </div><!-- /.about-one__box -->
+        </div><!-- /.col-md-6 -->
+
+            <div class="col">
+                <div class="about-one__box">
+                    <h3><i class="fa fa-check-circle"></i> <a
+                                style="color: #383a39"
+                                href="<?= FULL_SITE_ROOT . 'candles' ?>">Редактирование товаров</a></h3>
+                </div><!-- /.about-one__box -->
+            </div><!-- /.col-md-6 -->
+
+                <div class="col">
+                    <div class="about-one__box">
+                        <h3><i class="fa fa-check-circle"></i> <a
+                                    style="color: #383a39"
+                                    href="<?= FULL_SITE_ROOT . 'history' ?>">История заказов</a></h3>
+                    </div><!-- /.about-one__box -->
+                </div><!-- /.col-md-6 -->
+
     </div>
 </section>
 

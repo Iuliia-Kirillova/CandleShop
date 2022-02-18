@@ -3634,6 +3634,7 @@ h6 {
 .contact-one__form input[type=text],
 .contact-one__form input[type=email],
 .contact-one__form input[type=password],
+.contact-one__form input[type=phone],
 .contact-one__form input[type=number] {
   width: 100%;
   height: 61px;

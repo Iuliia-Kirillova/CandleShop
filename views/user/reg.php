@@ -5,12 +5,6 @@
     <section class="contact-one">
 
         <div class="container">
-            <div class="block-title text-center">
-                <div class="block-title__decor"></div><!-- /.block-title__decor -->
-                <p>Уже зарегистрированы?</p>
-                <h3><a style="text-decoration: none; color: #383a39"
-                       href="<?= FULL_SITE_ROOT . 'auth'; ?>">Авторизироваться</a></h3>
-            </div><!-- /.block-title -->
 
             <?php if (count($errors) > 0): ?>
                 <div class="errors" style="color: red">

@@ -25,6 +25,7 @@ class AdminController
     public function actionAdmin()
     {
         $title = "Здравствуйте, Администратор!";
+        $user = $_COOKIE['uid'];
 
         if (!$this->checkAdmin) {
             echo "Sorry";

@@ -6,6 +6,14 @@ $isAuthorized = false;
 
     <div class="container">
 
+        <div class="block-title text-center">
+            <div class="block-title__decor"></div><!-- /.block-title__decor -->
+            <p>Еще нет учетной записи?</p>
+            <p>
+                <a style="text-decoration: none; color: #383a39"
+                   href="<?= FULL_SITE_ROOT . 'reg'; ?>">Зарегистрироваться &#8658;</a></p>
+        </div><!-- /.block-title -->
+
         <?php if (count($errors) > 0): ?>
             <div class="errors" style="color: red">
                 <?php foreach ($errors as $error): ?>
