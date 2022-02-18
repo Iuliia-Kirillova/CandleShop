@@ -4,7 +4,13 @@
 
 <section class="cart-page">
     <div class="container">
+        <div class="block-title text-center">
+            <div class="block-title__decor"></div><!-- /.block-title__decor -->
+            <p>Вы выбрали такие товары:</p>
+        </div><!-- /.block-title -->
         <div class="table-responsive">
+            <?php if ($candleInCart): ?>
+
             <table class="table cart-table">
                 <thead>
                 <tr>
@@ -55,6 +61,10 @@
                 <a href="#" class="thm-btn">Update</a><!-- /.thm-btn -->
                 <a href="<?= FULL_SITE_ROOT . 'checkout' ?>" class="thm-btn">Checkout</a><!-- /.thm-btn -->
             </div><!-- /.button-box -->
+            <?php else: ?>
+                <p>Корзина пуста</p>
+            <?php endif; ?>
+
 
         </div><!-- /.row -->
     </div><!-- /.container -->
