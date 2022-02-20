@@ -74,6 +74,7 @@ class Candle
         `candle_price` = '$data[price]'
         WHERE `candle_id` = $id;
     ";
+        print_r ($query);
         return mysqli_query($this->connect, $query);
 
     }

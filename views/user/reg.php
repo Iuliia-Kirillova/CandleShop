@@ -14,7 +14,7 @@
                 </div>
             <?php endif; ?>
 
-            <form method="POST" class="contact-form-validated contact-one__form">
+            <form method="POST" class=" contact-one__form">
                 <div class="row">
                     <div class="col-md-6">
                         <input type="text" name="user_name" placeholder="Ваше имя" value="<?= isset($name) ? $name: '' ?>">

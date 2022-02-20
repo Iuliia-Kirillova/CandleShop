@@ -28,7 +28,7 @@
                     <input type="text" name="user_name" value="<?php echo $user['user_name']; ?>">
                 </div><!-- /.col-md-6 -->
                 <div class="col-md-6">
-                    <input type="text" value="<?php echo ['user_login']; ?>" disabled name="user_login">
+                    <input type="text" value="<?php echo $user['user_login']; ?>" disabled name="user_login">
                 </div><!-- /.col-md-6 -->
                 <div class="col-md-6">
                     <input type="text" value="<?php echo $user['user_email']; ?>" name="user_email">

@@ -2,33 +2,36 @@
 
 
 <section class="products-page">
+    <div class="col-md-12 text-center">
+        <a type="button" style="text-align: center" class="thm-btn" href="<?= FULL_SITE_ROOT . 'candle/add' ?>">Добавить новую свечу</a>
+    </div>
     <div class="container">
         <div class="row">
-
-
-
             <div class="product-sorter">
-
                 <div class="row">
                     <?php foreach ($candles as $candle): ?>
                         <div class="col-md-6 col-lg-4">
                             <div class="product-card">
                                 <div class="product-card__image">
                                     <img src="<?= IMG . $candle['candle_id'] . '.jpg' ?>" alt="">
-                                     <?php if (!$this->checkAdmin): ?>
+
                                     <div class="product-card__image-content">
+
                                         <a id="<?= $candle['candle_id']; ?>"
                                            href="<?= FULL_SITE_ROOT . 'candle/view/' . $candle['candle_id'] ?>">
                                             <i class="bi bi-three-dots"></i>
                                         </a>
+                                        <?php if (!$this->checkAdmin): ?>
                                         <a id="<?= $candle['candle_id']; ?>"
                                            href="<?= FULL_SITE_ROOT . 'cart/add/' . $candle['candle_id'] ?>"
                                            class="add_to_cart">
                                             <i class="organik-icon-shopping-cart"></i>
                                         </a>
+                                        <?php endif; ?>
                                     </div><!-- /.product-card__image-content -->
-                                     <?php endif; ?>
+
                                 </div><!-- /.product-card__image -->
+
                                 <div class="product-card__content">
                                     <div class="product-card__left">
                                         <h3>
@@ -62,6 +65,7 @@
             </div><!-- /.row -->
         </div><!-- /.container -->
 </section><!-- /.products-page -->
+
 <?= $pagination->get(); ?>
 
 <?php include_once('./views/common/footer.php'); ?>

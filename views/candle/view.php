@@ -15,8 +15,11 @@
                         <div class="product_detail_price_box">
                             <p><?= $candle['candle_price']; ?> руб.</p>
                         </div>
+
                         <div class="product_detail_review">
+
                             <?php if (!$userIsAlreadyVoted) : ?>
+                                <?php if (!$this->checkAdmin): ?>
                                 <div id="my-mark">
                                     <?php for ($i = 1; $i <= 5; $i++): ?>
                                         <i class="far fa-star" data-mark=" <?= $i; ?> "></i>
@@ -25,8 +28,9 @@
                                             onclick="candleEvaluate(<?= $id; ?>)">Оценить
                                     </button>
                                 </div>
+                                <?php endif; ?>
                             <?php endif; ?>
-                            <?php if ($userIsAlreadyVoted) : ?>
+                            <?php if ($userIsAlreadyVoted || $this->checkAdmin) : ?>
                                 <div class="product_detail_review">
                                     <?php for ($i = 1; $i <= 5; $i++): ?>
                                         <?php if ($candle['candle_average_mark'] >= $i): ?>
@@ -47,7 +51,8 @@
                     <?= $candle['candle_average_mark']; ?>
                 </span>
                                 </div>
-                            <?php endif; ?>
+                                <?php endif; ?>
+
                         </div>
                     </div>
                     <div class="product_detail_text">
@@ -55,16 +60,18 @@
                             venenatis ligula commodo leez sed blandit convallis dignissim onec vel pellentesque
                             neque.</p>
                     </div>
-                    <!--                    <div class="product-quantity-box">-->
-                    <!--                        <div class="quantity-box">-->
-                    <!--                            <button type="button" class="sub">-</button>-->
-                    <!--                            <input type="number" id="2" value="1"/>-->
-                    <!--                            <button type="button" class="add">+</button>-->
-                    <!--                        </div>-->
-                    <div class="addto-cart-box" style="margin-top: 15px">
-                        <a class="thm-btn add_to_cart" id="<?= $candle['candle_id']; ?>"
-                           href="<?= FULL_SITE_ROOT . 'cart/add/' . $candle['candle_id'] ?>">В корзину</a>
-                    </div>
+                    <?php if (!$this->checkAdmin): ?>
+                        <div class="addto-cart-box" style="margin-top: 15px">
+                            <a class="thm-btn add_to_cart" id="<?= $candle['candle_id']; ?>"
+                               href="<?= FULL_SITE_ROOT . 'cart/add/' . $candle['candle_id'] ?>">В корзину</a>
+                        </div>
+                    <?php else: ?>
+                        <a type="button" class="thm-btn" style="text-decoration: none"
+                           href="<?= FULL_SITE_ROOT . 'candle/edit/' . $candle['candle_id'] ?>"> Редактировать </a>
+                        <button type="delete" class="thm-btn"
+                                onclick="remove('candle', <?= $candle['candle_id'] ?>)"> Удалить
+                        </button>
+                    <?php endif; ?>
                 </div>
                 <div class="product_detail_share_box">
                     <div class="share_box_title">
@@ -83,77 +90,5 @@
 </section>
 
 <?php include_once("./views/common/footer.php") ?>
-
-
-<!--<div class="container">-->
-<!--    <div class="row justify-content-center">-->
-<!--        <div class="card text-center w-50" style="width: 18rem;">-->
-<!--            <img src="--><? //= IMG . $candle['candle_id'] . '.jpg' ?><!--" class="card-img-top" alt="Фото свечи">-->
-<!--            <div class="card-body">-->
-<!--                <h5 class="card-title">--><? //= $candle['candle_name']; ?><!--</h5>-->
-<!--                <p class="card-text"> Описание свечи </p>-->
-<!--                <p class="card-text">--><? //= $volumes['volume_value'] ?><!--</p>-->
-<!--                <p class="card-text">--><? //= $candle['candle_price']; ?><!-- руб.</p>-->
-<!--                --><?php //if (!$this->checkAdmin): ?>
-<!--                    --><?php //if (!$userIsAlreadyVoted) : ?>
-<!--                        <div>-->
-<!--                            Ваша оценка:-->
-<!--                        </div>-->
-<!--                        <div id="my-mark">-->
-<!--                            --><?php //for ($i = 1; $i <= 5; $i++): ?>
-<!--                                <i class="far fa-star" data-mark=" --><? //= $i; ?><!-- "></i>-->
-<!--                            --><?php //endfor; ?>
-<!--                            <button class="btn btn-primary mb-3" onclick="candleEvaluate(--><? //= $id; ?>//)">Оценить</button>
-//
-//                        </div>
-//                    <?php //endif; ?>
-<!--                    <div>-->
-<!--                        Оценка:-->
-<!--                    </div>-->
-<!---->
-<!--                    <div class="d-grid gap-2 col-6 mx-auto">-->
-<!--                        <a class="btn btn-primary add_to_cart" id="--><? //= $candle['candle_id']; ?><!--"-->
-<!--                           href="--><? //= FULL_SITE_ROOT . 'cart/add/' . $candle['candle_id'] ?><!--">В корзину</a>-->
-<!--                    </div>-->
-<!--                --><?php //endif; ?>
-<!---->
-<!--                --><?php //if ($this->checkAdmin): ?>
-<!--                    <a type="button" class="btn btn-success"-->
-<!--                       href="--><? //= FULL_SITE_ROOT . 'candle/edit/' . $candle['candle_id'] ?><!--"> Редактировать </a>-->
-<!--                    <button type="delete" class="btn btn-danger"-->
-<!--                            onclick="remove('candle', --><? //= $candle['candle_id'] ?>//)"> Удалить
-//                    </button>
-//                <?php //endif; ?>
-<!---->
-<!---->
-<!---->
-<!--                --><?php //if (!$this->checkAdmin): ?>
-<!--                    <div>-->
-<!--                        --><?php //for ($i = 1; $i <= 5; $i++): ?>
-<!--                            --><?php //if ($candle['candle_average_mark'] >= $i): ?>
-<!--                                <i class="fas fa-star"></i>-->
-<!--                            --><?php //else: ?>
-<!--                                --><?php //if (($i - $candle['candle_average_mark']) > 1): ?>
-<!--                                    <i class="far fa-star"></i>-->
-<!--                                --><?php //else: ?>
-<!--                                    --><?php //if (($i - $candle['candle_average_mark']) > 0.75): ?>
-<!--                                        <i class="far fa-star"></i>-->
-<!--                                    --><?php //else: ?>
-<!--                                        <i class="fas fa-star-half-alt"></i>-->
-<!--                                    --><?php //endif; ?>
-<!--                                --><?php //endif; ?>
-<!--                            --><?php //endif; ?>
-<!--                        --><?php //endfor; ?>
-<!--                        <span>-->
-<!--                    --><? //= $candle['candle_average_mark']; ?>
-<!--                </span>-->
-<!--                    </div>-->
-<!--                --><?php //endif; ?>
-<!---->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
 
 
