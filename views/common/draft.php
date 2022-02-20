@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,9 +34,6 @@
     <link rel="stylesheet" href="assets/css/organik.css" />
 </head>
 
-
-
-
 <body>
 <div class="preloader">
     <img class="preloader__image" width="55" src="<?= IMG . 'loader.png"' ?>" alt="" />
@@ -50,6 +46,10 @@
 <div class="page-wrapper">
 
 
+    <!--    <div class="stricky-header stricked-menu main-menu">-->
+    <!--        <div class="sticky-header__content"></div><!-- /.sticky-header__content -->-->
+    <!--    </div><!-- /.stricky-header -->-->
+
 
     <section class="main-slider">
         <div class="swiper-container thm-swiper__slider" data-swiper-options='{
@@ -57,7 +57,7 @@
     "loop": true,
     "effect": "fade",
     "autoplay": {
-        "delay": 10000
+        "delay": 5000
     },
     "navigation": {
         "nextEl": "#main-slider__swiper-button-next",
@@ -80,7 +80,22 @@
                         </div><!-- /.row -->
                     </div><!-- /.container -->
                 </div><!-- /.swiper-slide -->
-<!--
+                <div class="swiper-slide">
+                    <div class="image-layer" style="background-image: url(assets/images/main-slider/main-slider-1-2.jpg);">
+                    </div>
+                    <!-- /.image-layer -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 text-center">
+                                <h2><span>СВЕЧИ</span> <br>
+                                    ручной работы</h2>
+                                <a href="<?= FULL_SITE_ROOT . 'candles' ?>" class=" thm-btn">Выбрать</a>
+                                <!-- /.thm-btn dynamic-radius -->
+                            </div><!-- /.col-lg-7 text-right -->
+                        </div><!-- /.row -->
+                    </div><!-- /.container -->
+                </div><!-- /.swiper-slide -->
+            </div><!-- /.swiper-wrapper -->
 
 
 
@@ -98,7 +113,7 @@
 
 
 
-
+<!--<a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>-->
 
 
 <script src="assets/vendors/jquery/jquery-3.5.1.min.js"></script>

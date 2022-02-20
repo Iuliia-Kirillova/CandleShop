@@ -17,16 +17,16 @@
             <form method="POST" class="contact-form-validated contact-one__form">
                 <div class="row">
                     <div class="col-md-6">
-                        <input type="text" name="user_name" placeholder="Ваше имя">
+                        <input type="text" name="user_name" placeholder="Ваше имя" value="<?= isset($name) ? $name: '' ?>">
                     </div><!-- /.col-md-6 -->
                     <div class="col-md-6">
-                        <input type="text" placeholder="Логин" name="user_login">
+                        <input type="text" placeholder="Логин" name="user_login" value="<?= isset($login) ? $login : '' ?>">
                     </div><!-- /.col-md-6 -->
                     <div class="col-md-6">
-                        <input type="text" placeholder="Email" name="user_email">
+                        <input type="text" placeholder="Email" name="user_email" value="<?= isset($email) ? $email : '' ?>">
                     </div><!-- /.col-md-6 -->
                     <div class="col-md-6">
-                        <input type="text" placeholder="Номер телефона" name="user_phone">
+                        <input type="text" placeholder="Номер телефона" name="user_phone" value="<?= isset($phone) ? $phone : '' ?>">
                     </div><!-- /.col-md-6 -->
                     <div class="col-md-6">
                         <input type="password" placeholder="Пароль" name="user_password">
