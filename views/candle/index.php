@@ -2,9 +2,12 @@
 
 
 <section class="products-page">
+    <? if ($this->checkAdmin): ?>
     <div class="col-md-12 text-center">
         <a type="button" style="text-align: center" class="thm-btn" href="<?= FULL_SITE_ROOT . 'candle/add' ?>">Добавить новую свечу</a>
     </div>
+    <? endif; ?>
+
     <div class="container">
         <div class="row">
             <div class="product-sorter">
@@ -35,7 +38,7 @@
                                 <div class="product-card__content">
                                     <div class="product-card__left">
                                         <h3>
-                                            <a href="<?= FULL_SITE_ROOT . 'candle/view/' . $candle['candle_id'] ?>"><?= $candle['candle_name']; ?></a>
+                                            <a href="<?= FULL_SITE_ROOT . 'candle/view/' . $candle['candle_id'] ?>"><b><?= $candle['candle_name']; ?></b></a>
                                         </h3>
                                         <p><?= $candle['candle_price']; ?> руб.</p>
                                     </div><!-- /.product-card__left -->

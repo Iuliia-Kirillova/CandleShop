@@ -51,7 +51,7 @@
 
 <script src="<?= JS . 'jquery.js'; ?>"></script>
 <script src="<?= JS . 'cart.js'; ?>"></script>
-<script src="<?= JS . 'organik.js'; ?>"></script>
+<script src="<?= JS . 'main.js'; ?>"></script>
 <script src="<?= JS . 'script.js'; ?>"></script>
 
 <script src="https://www.google.com/recaptcha/api.js"></script>

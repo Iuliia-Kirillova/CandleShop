@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="<?= CSS . 'organik.css'; ?>">
     <link rel="stylesheet" href="<?= CSS . 'style.css'; ?>">
 </head>
-<body>
+<body link="red">
 
 
 <header class="main-header">
@@ -43,7 +43,7 @@
         <div class="container">
             <div class="main-logo">
                 <a href="<?= FULL_SITE_ROOT . 'main'; ?>" class="logo">
-                    <img src="<?= IMG . 'candles (1).png' ?>" width="105" alt="">
+                    <img src="<?= IMG . '1.png' ?>" width="105" alt="">
                 </a>
                 <div class="mobile-nav__buttons">
                     <?php if ($this->checkAdmin): ?>
@@ -107,22 +107,24 @@
             <div class="container">
                 <div class="main-menu__login">
                     <?php if (!$this->isAuthorized): ?>
-                        <a href="<?= FULL_SITE_ROOT . 'auth'; ?>"><i class="organik-icon-user"></i>Login / Register</a>
+                        <a href="<?= FULL_SITE_ROOT . 'auth'; ?>"><i class="organik-icon-user"></i>Войти/Зарегистрироваться</a>
                     <?php else: ?>
-                        <a href="<?= FULL_SITE_ROOT . 'logout'; ?>"><i class="organik-icon-user"></i>Logout</a>
+                        <a href="<?= FULL_SITE_ROOT . 'logout'; ?>"><i class="organik-icon-user"></i>Выход</a>
                     <?php endif; ?>
                 </div><!-- /.main-menu__login -->
                 <ul class="main-menu__list">
                     <li>
-                        <a href="<?= FULL_SITE_ROOT . 'main'; ?>">Home</a>
+                        <a href="<?= FULL_SITE_ROOT . 'main'; ?>">Домой</a>
                     </li>
                     <li>
-                        <a href="<?= FULL_SITE_ROOT . 'about'; ?>">About</a>
+                        <a href="<?= FULL_SITE_ROOT . 'candles'; ?>">Каталог</a>
                     </li>
                     <li>
-                        <a href="<?= FULL_SITE_ROOT . 'candles'; ?>">Shop</a>
+                        <a href="<?= FULL_SITE_ROOT . 'about'; ?>">О нас</a>
                     </li>
-                    <li><a href="<?= FULL_SITE_ROOT . 'contact'; ?>">Contact</a></li>
+                    <li>
+                        <a href="<?= FULL_SITE_ROOT . 'contact'; ?>">Контакты</a>
+                    </li>
                 </ul>
 
             </div><!-- /.container -->
@@ -136,8 +138,8 @@
     <div class="mobile-nav__content">
         <span class="mobile-nav__close mobile-nav__toggler"><i class="organik-icon-close"></i></span>
 
-        <div class="logo-box">
-            <a href="index.html" aria-label="logo image"><img src="<?= IMG . 'candles.png' ?>" width="155"
+        <div class="logo-box" style="justify-content: center">
+            <a href="index.html" aria-label="logo image"><img src="<?= IMG . '1.png' ?>" width="155"
                                                               alt=""/></a>
         </div>
         <!-- /.logo-box -->
@@ -147,20 +149,20 @@
         <ul class="mobile-nav__contact list-unstyled">
             <li>
                 <i class="organik-icon-email"></i>
-                <a href="mailto:needhelp@organik.com">needhelp@organik.com</a>
+                <a href="mailto:info@candleshop.com">info@candleshop.com</a>
             </li>
             <li>
                 <i class="organik-icon-calling"></i>
-                <a href="tel:666-888-0000">666 888 0000</a>
+                <a href="tel:+7(921)123-45-67">+7(921)123-45-67</a>
             </li>
         </ul><!-- /.mobile-nav__contact -->
         <div class="mobile-nav__top">
             <!-- /.mobile-nav__language -->
             <div class="main-menu__login">
                 <?php if (!$this->isAuthorized): ?>
-                    <a href="<?= FULL_SITE_ROOT . 'auth'; ?>"><i class="organik-icon-user"></i>Login / Register</a>
+                    <a href="<?= FULL_SITE_ROOT . 'auth'; ?>"><i class="organik-icon-user"></i>Войти/Зарегистрироваться</a>
                 <?php else: ?>
-                    <a href="<?= FULL_SITE_ROOT . 'logout'; ?>"><i class="organik-icon-user"></i>Logout</a>
+                    <a href="<?= FULL_SITE_ROOT . 'logout'; ?>"><i class="organik-icon-user"></i>Выход</a>
                 <?php endif; ?>
             </div><!-- /.main-menu__login -->
         </div><!-- /.mobile-nav__top -->

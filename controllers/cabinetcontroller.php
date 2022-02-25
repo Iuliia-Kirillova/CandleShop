@@ -111,6 +111,7 @@ class CabinetController
 
         $orders = $this->orderModel->getByUserId($id);
 
+
         include_once('./views/cabinet/history.php');
         return true;
     }

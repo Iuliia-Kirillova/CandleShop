@@ -1,34 +1,28 @@
 <?php include_once('./views/common/header.php'); ?>
 
-<section>
+<section class="checkout-page">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-9 padding-right">
-                <div class="features_items">
-
-                    <table class="table table-hover table-sm">
-                        <thead>
-                        <tr>
-                            <th> ID</th>
-                            <th> Data</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+        <?php if (!$orders == 0): ?>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="order-details">
+                        <div class="order-details__top">
+                            <p><b>Номер заказа</b></p>
+                            <p><b>Дата заказа</b></p>
+                        </div><!-- /.order-details__top -->
                         <?php foreach ($orders as $order): ?>
-                            <tr>
-                                <td>
-                                    <a href="<?= FULL_SITE_ROOT . 'history/view/' . $order['order_id'] ?>"><?= $order['order_id']; ?></a>
-                                </td>
-                                <td> <?= $order['order_data']; ?> </td>
-                            </tr>
+                            <p>
+                                <span><a href="<?= FULL_SITE_ROOT . 'history/view/' . $order['order_id'] ?>"><?= $order['order_id']; ?></a></span>
+                                <span><?= $order['order_data']; ?></span>
+                            </p>
                         <?php endforeach; ?>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                    </div><!-- /.order-details -->
+                </div><!-- /.col-md-6 -->
+            </div><!-- /.row -->
+        <?php else: ?>
+            <p>Вы еще ничего не заказали</p>
+        <?php endif; ?>
+    </div><!-- /.container -->
+</section><!-- /.checkout-page -->
 
 <?php include_once('./views/common/footer.php'); ?>

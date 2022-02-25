@@ -56,9 +56,10 @@
                         </div>
                     </div>
                     <div class="product_detail_text">
-                        <p>Aliquam hendrerit a augue insuscipit. Etiam aliquam massa quis des mauris commodo
-                            venenatis ligula commodo leez sed blandit convallis dignissim onec vel pellentesque
-                            neque.</p>
+                        <p><?= $candle['candle_description']; ?></p>
+                    </div>
+                    <div class="product_detail_text">
+                        <p><?= $volumes['volume_value'] ; ?> мл.</p>
                     </div>
                     <?php if (!$this->checkAdmin): ?>
                         <div class="addto-cart-box" style="margin-top: 15px">
@@ -75,11 +76,11 @@
                 </div>
                 <div class="product_detail_share_box">
                     <div class="share_box_title">
-                        <h2>Share with friends</h2>
+                        <h2>Поделиться</h2>
                     </div>
                     <div class="share_box_social">
                         <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>

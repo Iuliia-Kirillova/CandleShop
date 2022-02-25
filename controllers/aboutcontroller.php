@@ -15,7 +15,7 @@
      }
      public function actionAbout()
      {
-         $title = "About";
+         $title = "О нас";
          $sum = $this->cartModel->getSumma();
          $this->aboutModel->showAbout();
          include_once('./views/common/about.php');

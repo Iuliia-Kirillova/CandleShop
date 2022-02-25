@@ -89,12 +89,12 @@ class CartController
                 $result = $this->orderModel->save($name, $phone, $comment, $userId, $candlesInCart);
 
                 if ($result) {
+                    $this->cartModel->clear();
+                    $this->cartModel->getSumma();
                     $adminEmail = 'yvkirillova@yandex.ru';
                     $message = '...';
                     $subject = 'New order!';
                     // TODO: отправка заказа на электронную почту
-                    $this->cartModel->clear();
-                    $this->cartModel->getSumma();
                 }
             } else {
                 // Форма заполнена корректно? - Нет

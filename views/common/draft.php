@@ -134,7 +134,7 @@
 <script src="assets/vendors/isotope/isotope.js"></script>
 <script src="assets/vendors/countdown/countdown.min.js"></script>
 <!-- template js -->
-<script src="assets/js/organik.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 
 </html>

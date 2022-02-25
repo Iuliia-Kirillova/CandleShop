@@ -16,7 +16,6 @@
                 <tr>
                     <th><b>Товар</b></th>
                     <th><b>Цена</b></th>
-                    <th><b>Количество</b></th>
                     <th><b>Удалить</b></th>
                 </tr>
                 </thead>
@@ -30,13 +29,7 @@
                             </div><!-- /.product-box -->
                         </td>
                         <td><?php echo $candle['candle_price']; ?></td>
-                        <td>
-                            <div class="quantity-box">
-                                <button type="button" class="sub">-</button>
-                                <input type="number" id="2" value="<?php echo $candleInCart[$candle['candle_id']]; ?>" />
-                                <button type="button" class="add">+</button>
-                            </div>
-                        </td>
+
                         <td>
                             <a class="btn btn-default checkout" href="<?= FULL_SITE_ROOT . 'cart/delete/' . $candle['candle_id'] ?>"><i class="organik-icon-close remove-icon"></i></a>
                         </td>
@@ -53,13 +46,13 @@
 
             <ul class="cart-total list-unstyled">
                 <li>
-                    <span>Total</span>
+                    <span>Общая стоимость:</span>
                     <span><b><?php echo $totalPrice; ?> руб.</b> </span>
                 </li>
             </ul><!-- /.cart-total -->
             <div class="button-box">
-                <a href="#" class="thm-btn">Update</a><!-- /.thm-btn -->
-                <a href="<?= FULL_SITE_ROOT . 'checkout' ?>" class="thm-btn">Checkout</a><!-- /.thm-btn -->
+                <a href="#" class="thm-btn" style="visibility: hidden">Update</a><!-- /.thm-btn -->
+                <a href="<?= FULL_SITE_ROOT . 'checkout' ?>" class="thm-btn">Оформить заказ</a><!-- /.thm-btn -->
             </div><!-- /.button-box -->
             <?php else: ?>
                 <p>Корзина пуста</p>

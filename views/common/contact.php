@@ -28,7 +28,7 @@
               }
         }'>
                 <div>
-                    <div class="contact-infos__single">
+                    <div class="contact-infos__single" style="height: 300px">
                         <i class="organik-icon-calling"></i>
                         <h3>Звоните по телефону и пишите в WhatsApp</h3>
                         <p><a href="tel:92-666-888-0000">+7(921)123-45-67</a> <br>
@@ -37,14 +37,14 @@
                     </div><!-- /.contact-infos__single -->
                 </div>
                 <div>
-                    <div class="contact-infos__single">
+                    <div class="contact-infos__single" style="height: 300px">
                         <i class="bi bi-instagram"></i>
                         <h3>Подписывайтесь в Instagram</h3>
                     </div><!-- /.contact-infos__single -->
                 </div>
 
                 <div>
-                    <div class="contact-infos__single">
+                    <div class="contact-infos__single" style="height: 300px">
                         <i class="organik-icon-email"></i>
                         <h3>Пишите на Email</h3>
                         <p>

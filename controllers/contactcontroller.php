@@ -16,7 +16,7 @@
      }
      public function actionContact()
      {
-         $title = "Contact";
+         $title = "Контакты";
          $sum = $this->cartModel->getSumma();
          $this->contactModel->showContact();
          include_once('./views/common/contact.php');
