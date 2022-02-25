@@ -4,17 +4,23 @@ class VolumeController
 {
     private $volumeModel;
     public $isAuthorized;
+    private $cartModel;
+    public $checkAdmin;
 
     public function __construct()
     {
         $this->volumeModel = new Volume();
         $this->isAuthorized = (new User())->userIsAuthorized();
+        $this->cartModel = new Cart();
+        $this->checkAdmin = (new Admin())->checkAdmin();
     }
 
     public function actionIndex()
     {
-//      echo "Вызван метод Index в CandleController";
         $title = 'Объемы';
+
+        $sum = $this->cartModel->getSumma();
+
         $volumes = $this->volumeModel->getAll();
         include_once('./views/volume/index.php');
     }

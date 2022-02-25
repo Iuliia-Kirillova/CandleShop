@@ -4,16 +4,21 @@ class UserController
 {
     private $userModel;
     private $connection;
+    public $isAuthorized;
+    public $checkAdmin;
+    private $cartModel;
 
     public function __construct()
     {
         $this->userModel = new User();
         $this->connection = DB::getConnection();
+        $this->cartModel = new Cart();
     }
 
     public function actionReg()
     {
         $title = "Регистрация";
+        $sum = $this->cartModel->getSumma();
         $errors = [];
 
         if (isset($_POST['user_login'])) {
@@ -25,6 +30,15 @@ class UserController
             } else {
                 $errors[] = 'В логине допускаются только латинские буквы, цифры, - и _';
             }
+
+            $name = htmlentities($_POST['user_name']);
+            $name = mysqli_real_escape_string($this->connection, $name);
+            if (!$name) {$errors[] = 'Введите логин!';}
+            if (preg_match("/^[а-яА-Яa-z0-9_-]{2,20}$/i", $name)) {
+            } else {
+                $errors[] = 'В логине допускаются только латинские буквы, цифры, - и _';
+            }
+
             $email = htmlentities($_POST['user_email']);
             $email = mysqli_real_escape_string($this->connection, $email);
             if (!$email) {$errors[] = 'Введите email!';}
@@ -32,6 +46,15 @@ class UserController
             } else {
                 $errors[] = 'Введите корректный email!';
             }
+
+            $phone = htmlentities($_POST['user_phone']);
+            $phone = mysqli_real_escape_string($this->connection, $phone);
+            if (!$phone) {$errors[] = 'Введите phone!';}
+            if (preg_match("/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/", $phone)) {
+            } else {
+                $errors[] = 'Введите корректный телефон!';
+            }
+
             $password = htmlentities($_POST['user_password']);
             $password = mysqli_real_escape_string($this->connection, $password);
             if (!$password) {$errors[] = 'Введите пароль!';}
@@ -56,9 +79,14 @@ class UserController
                     $errors[] = 'Пользователь с таким email уже есть';
                 }
 
+                $countRows = $this->userModel->checkIfPhoneExists($phone);
+                if ($countRows == 1) {
+                    $errors[] = 'Пользователь с таким телефоном уже есть';
+                }
+
                 if (empty($errors)) {
                     $password = md5($password);
-                    $userId =  $this->userModel->register($login, $email, $password);
+                    $userId =  $this->userModel->register($login, $name, $email, $phone, $password);
                     $this->userModel->auth($userId);
                     header('Location: ' . FULL_SITE_ROOT . 'candles');
                 }
@@ -71,6 +99,7 @@ class UserController
     public function actionAuth()
     {
         $title = "Авторизация";
+        $sum = $this->cartModel->getSumma();
         $errors = [];
 
         if (isset($_POST['user_login'])) {
@@ -79,24 +108,33 @@ class UserController
             $login = mysqli_real_escape_string($this->connection, $login);
 
             $password = htmlentities($_POST['user_password']);
+            $password = md5($password); // подправить скрытие пароля
             $password = mysqli_real_escape_string($this->connection, $password);
-            $password = md5($password);
 
             $userId = $this->userModel->checkUserByLoginAndPassword($login, $password);
             if ($userId > 0) {
                 $this->userModel->auth($userId);
-                header('Location: ' . FULL_SITE_ROOT . 'candles');
+                if ($login == 'admin') {
+                    header('Location: ' . FULL_SITE_ROOT . 'admin');
+                } else {
+                    header('Location: ' . FULL_SITE_ROOT . 'cabinet');
+                }
+
             } else {
                 $errors[] = 'Такой связки логин/пароль не найдено!';
+//                header('Location: ' . FULL_SITE_ROOT . 'reg');
             }
-
-
+//            header('Location: ' . FULL_SITE_ROOT . 'cabinet');
         }
         require_once('./views/user/auth.php');
     }
 
     public function actionLogout() {
+
+        unset($_SESSION['candles']);
         $this->userModel->logout();
+
+
         header('Location: ' . FULL_SITE_ROOT . 'candles');
     }
 

@@ -1,7 +1,5 @@
 <?php
-//ini_set("error_reporting", E_ALL);
-//ini_set("display_errors", 1);
-//ini_set("display_startup_errors", 1);
+
 class CandleController
 {
     private $candleModel;
@@ -9,6 +7,8 @@ class CandleController
     private $userModel;
     private $connection;
     public $isAuthorized;
+    public $checkAdmin;
+    private $cartModel;
 
     public function __construct()
     {
@@ -17,12 +17,15 @@ class CandleController
         $this->userModel = new User();
         $this->connection = DB::getConnection();
         $this->isAuthorized = (new User())->userIsAuthorized();
+        $this->checkAdmin = (new Admin())->checkAdmin();
+        $this->cartModel = new Cart();
     }
 
     public function actionIndex($page = 1)
     {
         $title = 'Каталог свечей';
-        $limit = 3;
+        $sum = $this->cartModel->getSumma();
+        $limit = 6;
         $offset = ($page - 1) * $limit;
         $candlesInfo = $this->candleModel->getList($offset, $limit);
         $candles = $candlesInfo['candles'];
@@ -62,7 +65,12 @@ class CandleController
                     'price' => $price
                 ));
             }
-            header('Location: ' . FULL_SITE_ROOT . 'candles');
+
+            $id = $this->candleModel->getId();
+            if (is_uploaded_file($_FILES['candle_img']['tmp_name'])) {
+                move_uploaded_file($_FILES['candle_img']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/oop_CS/assets/images/{$id}.jpg");}
+
+            header('Location: ' . FULL_SITE_ROOT . 'candle/view/' . $id);
         }
 
         $volumes = $this->volumeModel->getAll();
@@ -99,12 +107,17 @@ class CandleController
         if (empty($errors)) {
             $this->candleModel->editCandle(array(
                 'name' => $name,
+                'images' => $img,
                 'volume' => $volume,
                 'smell' => $smell,
                 'description' => $description,
                 'price' => $price
             ), $id);
-            header('Location: ' . FULL_SITE_ROOT . 'candles');
+
+            if (is_uploaded_file($_FILES['candle_img']['tmp_name'])) {
+                move_uploaded_file($_FILES['candle_img']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/oop_CS/assets/images/{$id}.jpg");}
+
+            header('Location: ' . FULL_SITE_ROOT . 'candle/view/' . $id);
         }
     }
         $volumes = $this->volumeModel->getAll();
@@ -126,8 +139,11 @@ class CandleController
     public function actionView($id)
     {
         $title = "Описание свечи";
+        $sum = $this->cartModel->getSumma();
         $candle = $this->candleModel->getById($id);
+        $volumes = $this->volumeModel->getByIdCandle($id);
         $userIsAlreadyVoted = $this->userModel->userAlreadyVoted($id);
+
         include_once('./views/candle/view.php');
     }
 

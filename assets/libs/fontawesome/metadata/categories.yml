@@ -1473,7 +1473,7 @@ maps:
     - ship
     - shoe-prints
     - shopping-bag
-    - shopping-basket
+    - shopping-cart
     - shopping-cart
     - shower
     - snowplow
@@ -1851,7 +1851,7 @@ objects:
     - search
     - shield-alt
     - shopping-bag
-    - shopping-basket
+    - shopping-cart
     - shopping-cart
     - shower
     - sim-card
@@ -1937,7 +1937,7 @@ payments-shopping:
     - paypal
     - receipt
     - shopping-bag
-    - shopping-basket
+    - shopping-cart
     - shopping-cart
     - star
     - stripe
@@ -2140,7 +2140,7 @@ shopping:
     - receipt
     - shipping-fast
     - shopping-bag
-    - shopping-basket
+    - shopping-cart
     - shopping-cart
     - store
     - store-alt

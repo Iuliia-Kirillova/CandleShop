@@ -1,4 +1,8 @@
+// const myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+
 const mainUrl = "http://localhost/oop_CS";
+
+
 
 function remove(name, id) {
 
@@ -8,7 +12,7 @@ function remove(name, id) {
 }
 
 const mark = document.getElementById("my-mark");
-console.log(mark);
+// console.log(mark);
 const marks = document.querySelectorAll("#my-mark .fa-star")
 if (mark) {
     mark.addEventListener('mouseover', (event) => {

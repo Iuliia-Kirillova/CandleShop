@@ -47,13 +47,20 @@ class Candle
         $query = "
                 INSERT INTO `candles`
                 SET `candle_name` = '$data[name]',
+                `candle_img` = '',
                 `candle_volume_id` = '$data[volume]',
                 `candle_smell` = '$data[smell]',
                 `candle_description` = '$data[description]',
                 `candle_price` = '$data[price]';
             ";
+        $id = mysqli_insert_id($this->connect);
         return mysqli_query($this->connect, $query);
 
+    }
+
+    public function getId() {
+        $id = mysqli_insert_id($this->connect);
+        return $id;
     }
 
     public function editCandle($data, $id)
@@ -67,6 +74,7 @@ class Candle
         `candle_price` = '$data[price]'
         WHERE `candle_id` = $id;
     ";
+        print_r ($query);
         return mysqli_query($this->connect, $query);
 
     }
@@ -79,6 +87,34 @@ class Candle
     ";
         $result = mysqli_query($this->connect, $query);
         return mysqli_fetch_assoc($result);
+    }
+
+    public function getByIds($ids)
+    {
+        $candles = array();
+
+        $idString = implode(',', $ids);
+
+        $query = "
+        SELECT * FROM `candles`  
+        WHERE `candle_id` IN ($idString);
+    ";
+
+        $result = mysqli_query($this->connect, $query);
+
+        $i=0;
+        while ($row = $result->fetch_assoc()) {
+            $candles[$i]['candle_id'] = $row['candle_id'];
+            $candles[$i]['candle_name'] = $row['candle_name'];
+//            $candles[$i]['candle_img'] = $row['candle_img'];
+//            $candles[$i]['candle_volume_id '] = $row['candle_volume_id '];
+//            $candles[$i]['candle_smell'] = $row['candle_smell'];
+//            $candles[$i]['candle_description'] = $row['candle_description'];
+            $candles[$i]['candle_price'] = $row['candle_price'];
+//            $candles[$i]['candle_average_mark'] = $row['candle_average_mark'];
+            $i++;
+        }
+        return $candles;
     }
 
     public function deleteCandle($id)

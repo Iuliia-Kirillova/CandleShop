@@ -16,12 +16,6 @@ class Volume
             ->where('WHERE volume_is_deleted = 0')
             ->build();
 
-//        $query = "
-//            SELECT `volume_id` AS `id`, `volume_value`
-//            FROM `volumes`
-//            WHERE `volume_is_deleted` = 0;
-//        ";
-
         $result = mysqli_query($this->connect, $query);
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
@@ -40,9 +34,20 @@ class Volume
     public function getById($id)
     {
         $query = "
-        SELECT * FROM `volumes` 
-        WHERE `volume_id` = $id;
+            SELECT * FROM `volumes` 
+            WHERE `volume_id` = $id;
     ";
+        $result = mysqli_query($this->connect, $query);
+        return mysqli_fetch_assoc($result);
+    }
+
+    public function getByIdCandle($id)
+    {
+        $query = "
+            SELECT * FROM `volumes` 
+            left join `candles` on `volume_id` = `candle_volume_id`
+            WHERE  `candle_id` = $id;
+        ";
         $result = mysqli_query($this->connect, $query);
         return mysqli_fetch_assoc($result);
     }

@@ -20,7 +20,6 @@
                     if (preg_match("~$fullPath~", $userUrl)) {
                         $actionWithParameters = preg_replace("~$fullPath~", $actionWithParameters, $userUrl); // => 'edit/5'
                         $actionWithParametersArray = explode("/", $actionWithParameters); // => ['edit', '5']
-//                        echo $actionWithParameters;
                         $actionWithoutParameters = array_shift($actionWithParametersArray); // => 'edit'
                         $requestedController = new $controller();
                         $found = true;
@@ -31,7 +30,10 @@
                 }
             }
             if (!$found) {
+                $error = new ErrorController;
+                $error->actionError();
                 // TODO: redirect на ErrorController -> actionError;
+
             }
         }
     }
